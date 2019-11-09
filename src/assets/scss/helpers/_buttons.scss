@@ -1,0 +1,250 @@
+//button size
+.bs{
+  &-giant{
+    width: 124px;
+    height: 56px;
+    &.only-icon{
+      width: 56px;
+    }
+  }
+  &-large{
+    width: 108px;
+    height: 48px;
+    &.only-icon{
+      width: 48px;
+    }
+  }
+  &-medium{
+    width: 100px;
+    height: 40px;
+    &.only-icon{
+      width: 40px;
+    }
+  }
+  &-small{
+    width: 83px;
+    height: 32px;
+    &.only-icon{
+      width: 32px;
+    }
+  }
+  &-tiny{
+    width: 66px;
+    height: 24px;
+    &.only-icon{
+      width: 24px;
+    }
+  }
+}
+
+//button properties
+.bp{
+  &-fill, &-outline, &-ghost{
+    border-radius: 4px;
+  }
+  &-fill, &-outline{
+    text-transform: uppercase;
+  }
+  &-fill, &-ghost{
+    border: none;
+  }
+  &-outline{
+    border-style: solid;
+    border-width: 1px;
+  }
+  &-ghost{
+    text-transform: capitalize;
+  }
+}
+
+//button colors
+.bc{
+  &-primary{
+    &-fill{
+      color: map-get($theme-colors, theme-white);
+      background-color: map-get($theme-colors, brand-primary);
+
+      &:hover{
+        background-color: lighten(map-get($theme-colors, brand-primary), 10%);
+      }
+      &:active{
+        background-color: darken(map-get($theme-colors, brand-primary), 10%);
+      }
+    }
+    &-outline, &-ghost{
+      color: map-get($theme-colors, brand-primary);
+      background-color: map-get($theme-colors, theme-white);
+    }
+    &-outline{
+      border-color: map-get($theme-colors, brand-primary);
+
+      &:hover{
+        background-color: lighten(map-get($theme-colors, brand-primary), 45%);
+      }
+      &:active{
+        background-color: lighten(map-get($theme-colors, brand-primary), 40%);
+      }
+    }
+  }
+  &-success{
+    &-fill{
+      color: map-get($theme-colors, theme-white);
+      background-color: map-get($theme-colors, semantic-success);
+
+      &:hover{
+        background-color: lighten(map-get($theme-colors, semantic-success), 10%);
+      }
+      &:active{
+        background-color: darken(map-get($theme-colors, semantic-success), 10%);
+      }
+    }
+    &-outline, &-ghost{
+      color: map-get($theme-colors, semantic-success);
+      background-color: map-get($theme-colors, theme-white);
+    }
+    &-outline{
+      border-color: map-get($theme-colors, semantic-success);
+
+      &:hover{
+        background-color: lighten(map-get($theme-colors, semantic-success), 55%);
+      }
+      &:active{
+        background-color: lighten(map-get($theme-colors, semantic-success), 50%);
+      }
+    }
+  }
+  &-info{
+    &-fill{
+      color: map-get($theme-colors, theme-white);
+      background-color: map-get($theme-colors, semantic-info);
+
+      &:hover{
+        background-color: lighten(map-get($theme-colors, semantic-info), 10%);
+      }
+      &:active{
+        background-color: darken(map-get($theme-colors, semantic-info), 10%);
+      }
+    }
+    &-outline, &-ghost{
+      color: map-get($theme-colors, semantic-info);
+      background-color: map-get($theme-colors, theme-white);
+    }
+    &-outline{
+      border-color: map-get($theme-colors, semantic-info);
+
+      &:hover{
+        background-color: lighten(map-get($theme-colors, semantic-info), 45%);
+      }
+      &:active{
+        background-color: lighten(map-get($theme-colors, semantic-info), 40%);
+      }
+    }
+  }
+  &-warning{
+    &-fill{
+      color: map-get($theme-colors, theme-white);
+      background-color: map-get($theme-colors, semantic-warning);
+
+      &:hover{
+        background-color: lighten(map-get($theme-colors, semantic-warning), 10%);
+      }
+      &:active{
+        background-color: darken(map-get($theme-colors, semantic-warning), 10%);
+      }
+    }
+    &-outline, &-ghost{
+      color: map-get($theme-colors, semantic-warning);
+      background-color: map-get($theme-colors, theme-white);
+    }
+    &-outline{
+      border-color: map-get($theme-colors, semantic-warning);
+
+      &:hover{
+        background-color: lighten(map-get($theme-colors, semantic-warning), 45%);
+      }
+      &:active{
+        background-color: lighten(map-get($theme-colors, semantic-warning), 40%);
+      }
+    }
+  }
+  &-danger{
+    &-fill{
+      color: map-get($theme-colors, theme-white);
+      background-color: map-get($theme-colors, semantic-danger);
+
+      &:hover{
+        background-color: lighten(map-get($theme-colors, semantic-danger), 10%);
+      }
+      &:active{
+        background-color: darken(map-get($theme-colors, semantic-danger), 10%);
+      }
+    }
+    &-outline, &-ghost{
+      color: map-get($theme-colors, semantic-danger);
+      background-color: map-get($theme-colors, theme-white);
+    }
+    &-outline{
+      border-color: map-get($theme-colors, semantic-danger);
+
+      &:hover{
+        background-color: lighten(map-get($theme-colors, semantic-danger), 35%);
+      }
+      &:active{
+        background-color: lighten(map-get($theme-colors, semantic-danger), 30%);
+      }
+    }
+  }
+
+  &-primary,
+  &-success,
+  &-info,
+  &-warning,
+  &-danger{
+    &-fill, &-outline, &-ghost{
+      &.disabled{
+        color: lighten(map-get($theme-colors, theme-default), 50%);
+        pointer-events: none;
+      }
+    }
+    &-outline, &-ghost{
+      &.disabled{
+        background-color: lighten(map-get($theme-colors, theme-default), 75%);
+      }
+    }
+    &-fill{
+      &.disabled{
+        background-color: lighten(map-get($theme-colors, theme-default), 70%);
+      }
+    }
+    &-outline{
+      &.disabled{
+        border: 1px solid lighten(map-get($theme-colors, theme-default), 70%);
+      }
+    }
+    &-ghost{
+      &:hover{
+        background-color: darken(map-get($theme-colors, theme-white), 5%);
+      }
+      &:active{
+        background-color: darken(map-get($theme-colors, theme-white), 10%);
+      }
+    }
+  }
+}
+
+$sizes: giant, large, medium, small, tiny;
+$types: fill, outline, ghost;
+$colors: primary, success, info, warning, danger;
+
+@each $color in $colors{
+  @each $type in $types{
+    @each $size in $sizes{
+      .button__#{$size}-#{$type}--#{$color}{
+        @extend .bf-#{$size};
+        @extend .bs-#{$size};
+        @extend .bp-#{$type};
+        @extend .bc-#{$color}-#{$type};
+      }
+    }
+  }
+}
