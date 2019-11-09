@@ -1,0 +1,182 @@
+@font-face {
+  font-family: OpenSans;
+  src: local(OpenSans),
+    url("/assets/fonts/OpenSans-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: local(OpenSans-SemiBold),
+    url("/assets/fonts/OpenSans-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: local(OpenSans-Bold),
+    url("/assets/fonts/OpenSans-Bold.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
+.s1, .s2,
+.p1, .p2,
+.c1, .c2,
+.label, label,
+.bf{
+  font-family: OpenSans;
+  color: map-get($theme-colors, theme-default);
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+}
+
+.s1, .s2,
+.p1, .p2,
+.c1, .c2,
+.label, label{
+  &.hint, &.disabled{
+    color: map-get($theme-colors, theme-grey);
+  }
+  &.disabled{
+    opacity: 0.5;
+  }
+}
+
+.c1, .c2,
+.label, label{
+  &.primary{
+    color: map-get($theme-colors, brand-primary);
+  }
+  &.success{
+    color: map-get($theme-colors, semantic-success);
+  }
+  &.info{
+    color: map-get($theme-colors, semantic-info);
+  }
+  &.warning{
+    color: map-get($theme-colors, semantic-warning);
+  }
+  &.danger{
+    color: map-get($theme-colors, semantic-danger);
+  }
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-weight: bold;
+}
+h1, .h1{
+  font-size: 36px;
+  line-height: 1.33;
+}
+h2, .h2{
+  font-size: 32px;
+  line-height: 1.25;
+}
+h3, .h3{
+  font-size: 30px;
+  line-height: 1.33;
+}
+h4, .h4{
+  font-size: 26px;
+  line-height: 1.23;
+}
+h5, .h5{
+  font-size: 22px;
+  line-height: 1.45;
+}
+h5, .h6{
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.s1, .s2{
+  font-weight: 600;
+}
+.s1{
+  font-size: 15px;
+  line-height: 1.6;
+}
+.s2{
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+.p1, .p2{
+  font-weight: normal;
+}
+.p1{
+  font-size: 15px;
+  line-height: 1.33;
+}
+.p2{
+  font-size: 13px;
+  line-height: 1.38;
+}
+
+.c1, .c2{
+  font-size: 12px;
+  line-height: 1.33;
+}
+.c1{
+  font-weight: normal;
+}
+.c2{
+  font-weight: 600;
+}
+
+.label, label{
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.33;
+}
+
+.bf{
+  font-weight: bold;
+
+  &-giant{
+    @extend .bf;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  &-large{
+    @extend .bf;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  &-medium{
+    @extend .bf;
+    font-size: 14px;
+    line-height: 1.14;
+  }
+  &-small{
+    @extend .bf;
+    font-size: 12px;
+    line-height: 1.33;
+  }
+  &-tiny{
+    @extend .bf;
+    font-size: 10px;
+    line-height: 1.2;
+  }
+}
