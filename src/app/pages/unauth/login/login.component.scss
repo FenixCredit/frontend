@@ -1,0 +1,40 @@
+@import 'scss/unauth';
+
+.background{
+  width: 100vw;
+  height: 100vh;
+  padding-left: 50%;
+
+  background-image: url('/assets/images/login-stock.jpg');
+  background-repeat: no-repeat, repeat;
+  background-position: 0 0, 0 0;
+  background-size: 50% auto, 100%;
+
+  .dialog{
+    width: 445px;
+    height: 100%;
+    padding: 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+
+    h1{
+      margin-bottom: 64px;
+    }
+
+    .form{
+      *{
+        display: block;
+        margin-bottom: 24px;
+      }
+      input, button{
+        width: 365px;
+      }
+      a{
+        @extend .p1.hint;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
