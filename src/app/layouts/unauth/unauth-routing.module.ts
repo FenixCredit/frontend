@@ -6,7 +6,8 @@ import { LoginComponent } from '@pages/unauth/login/login.component';
 
 const routes: Routes = [
   { path: '', component: UnauthComponent, children: [
-    { path: '', component: LoginComponent }
+    { path: '', component: LoginComponent },
+    { path: 'forgot-password', loadChildren: '../../pages/unauth/forgot-password/forgot-password.module#ForgotPasswordModule' }
   ]}
 ];
 
