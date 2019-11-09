@@ -1,0 +1,55 @@
+input, .input-icon{
+  @extend .s1;
+  height: 48px;
+  min-width: 296px;
+  border-radius: 4px;
+  color: map-get($theme-colors, theme-default);
+  border: 1px solid lighten(map-get($theme-colors, theme-grey), 25%);
+  background-color: lighten(map-get($theme-colors, theme-grey), 35%);
+  &:hover{
+    background-color: lighten(map-get($theme-colors, theme-grey), 25%);
+  }
+  &:focus{
+    outline-width: 3px;
+    outline-offset: .5px;
+    outline-color: lighten(map-get($theme-colors, theme-grey), 25%);
+    border-color: map-get($theme-colors, brand-primary);
+    background-color: lighten(map-get($theme-colors, theme-grey), 35%);
+  }
+  &::placeholder{
+    color: lighten(map-get($theme-colors, theme-grey), 10%);
+  }
+  &.primary{
+    border-color: map-get($theme-colors, brand-primary);
+  }
+  &.success{
+    border-color: map-get($theme-colors, semantic-success);
+  }
+  &.warning{
+    border-color: map-get($theme-colors, semantic-warning);
+  }
+  &.danger{
+    border-color: map-get($theme-colors, semantic-danger);
+  }
+  &.info{
+    border-color: map-get($theme-colors, semantic-info);
+  }
+}
+input{
+  padding: 14px 16px;
+}
+.with-icon{
+  padding: 14px 53px 14px 16px;
+  background-repeat: no-repeat, repeat;
+  background-position: 95% 50%, 0 0;
+  background-size: 24px auto, 100%;
+}
+@mixin generate-input-with-icon($icon) {
+  .with-icon--#{$icon} {
+    @extend .with-icon;
+    background-image: url("/assets/icons/#{$icon}/default.svg");
+    &:focus{
+      background-image: url("/assets/icons/#{$icon}/focus.svg");
+    }
+  }
+}
