@@ -1,0 +1,27 @@
+@import 'scss/unauth';
+
+.wrapper{
+  width: 100%;
+
+  & > img{
+    display: block;
+    margin: 0 auto 40px;
+  }
+
+  & > p{
+    margin-bottom: 40px;
+  }
+
+  input{
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  button:first-of-type{
+    margin-right: 24px;
+  }
+
+  button:last-of-type{
+    width: 301px;
+  }
+}
