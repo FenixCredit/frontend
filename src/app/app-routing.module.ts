@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: './layouts/unauth/unauth.module#UnauthModule',
+  },
+  {
+    path: 'dashboard',
+    loadChildren: './layouts/dashboard/dashboard.module#DashboardModule',
   }
 ];
 
