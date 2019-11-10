@@ -8,6 +8,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ResetSuccesfulComponent } from './reset-succesful/reset-succesful.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'put-email', pathMatch: 'full' },
   { path: '', component: ForgotPasswordComponent, children: [
     { path: 'put-email', component: PutEmailComponent },
     { path: 'link-sent', component: LinkSentComponent },
