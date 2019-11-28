@@ -1,0 +1,48 @@
+@import 'scss/app';
+
+td{
+  &.active:last-child{
+    &::before{
+      background-color: map-get($theme-colors, semantic-success);
+    }
+    span::before{
+      content: "Activo"
+    }
+  }
+
+  &.invited:last-child{
+    &::before{
+      background-color: map-get($theme-colors, brand-primary);
+    }
+    span::before{
+      content: "Invitado"
+    }
+  }
+
+  &.inactive:last-child{
+    &::before{
+      background-color: map-get($theme-colors, semantic-warning);
+    }
+    span::before{
+      content: "Inactivo"
+    }
+  }
+
+  &.lost:last-child{
+    &::before{
+      background-color: map-get($theme-colors, semantic-danger);
+    }
+    span::before{
+      content: "Perdido"
+    }
+  }
+
+  &.disabled:last-child{
+    &::before{
+      background-color: map-get($theme-colors, theme-grey);
+    }
+    span::before{
+      content: "Deshabilitado"
+    }
+  }
+}

@@ -71,7 +71,7 @@
       }
       &.active{
         font-weight: 600;
-        color: map-get($theme-colors, brand-primary);
+        color: map-get($theme-colors, brand-secondary);
         background-color: lighten(map-get($theme-colors, theme-grey), 35%);
       }
       &#users{
@@ -80,7 +80,7 @@
         }
         &.active{
           &::before{
-            background-image: url("/assets/icons/users/focus.svg");
+            background-image: url("/assets/icons/users/active.svg");
           }
         }
       }
@@ -90,7 +90,7 @@
         }
         &.active{
           &::before{
-            background-image: url("/assets/icons/star/focus.svg");
+            background-image: url("/assets/icons/star/active.svg");
           }
         }
       }

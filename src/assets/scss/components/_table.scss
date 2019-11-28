@@ -1,0 +1,45 @@
+table{
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-left: 1px map-get($theme-colors, theme-grey) solid;
+  border-right: 1px map-get($theme-colors, theme-grey) solid;
+}
+
+th, td{
+  padding: 10px;
+}
+
+th{
+  @extend .p2.hint;
+}
+
+td {
+  border-top: 1px map-get($theme-colors, theme-grey) solid;
+  border-bottom: 1px map-get($theme-colors, theme-grey) solid;
+
+  &:last-child{
+    position: relative;
+    padding-left: 14px;
+
+    &::before{
+      content: " ";
+      width: 6px;
+      height: 6px;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+    }
+  }
+
+  span{
+    @extend .p2;
+    display: block;
+
+    &:nth-child(2){
+      @extend .hint;
+    }
+  }
+}

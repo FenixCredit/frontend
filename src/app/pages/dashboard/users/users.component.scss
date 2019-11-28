@@ -76,19 +76,19 @@
         &#admin{
           background-image: url("/assets/icons/employee/default.svg");
           &.active{
-            background-image: url("/assets/icons/employee/focus.svg");
+            background-image: url("/assets/icons/employee/active.svg");
           }
         }
         &#promoter{
           background-image: url("/assets/icons/promoter/default.svg");
           &.active{
-            background-image: url("/assets/icons/promoter/focus.svg");
+            background-image: url("/assets/icons/promoter/active.svg");
           }
         }
         &#accredited{
           background-image: url("/assets/icons/accredited/default.svg");
           &.active{
-            background-image: url("/assets/icons/accredited/focus.svg");
+            background-image: url("/assets/icons/accredited/active.svg");
           }
         }
         &.active{

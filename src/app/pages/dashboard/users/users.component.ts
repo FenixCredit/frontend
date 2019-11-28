@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ViewChild, ViewChildren, QueryList, ElementRef } from '@angular/core';
 
 import { UsersService } from './users.service';
+import { UsersTableComponent } from './users-table/users-table.component';
 
 @Component({
   selector: 'app-users',
@@ -12,6 +13,7 @@ export class UsersComponent implements OnInit {
 
   selectedTab: number;
   selectedUsers: Array<any>;
+  @ViewChild(UsersTableComponent) table: UsersTableComponent;
 
   constructor(
     private _users: UsersService,
@@ -41,6 +43,7 @@ export class UsersComponent implements OnInit {
         this.selectedTab = 3
         break;
     }
+    this.table.getUsers(this.selectedTab)
     this.renderer.addClass(event.target, 'active');
   }
 
@@ -52,6 +55,10 @@ export class UsersComponent implements OnInit {
     } else {
       this.renderer.addClass(event.target.parentElement, 'active');
     }
+  }
+
+  updateSelectedUsers(users: Array<any>){
+    this.selectedUsers = users;
   }
 
 }

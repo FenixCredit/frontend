@@ -49,7 +49,9 @@
       <button type="button" class="button__large-outline--primary">Más recientes</button>
     </section>
 
-    <app-users-table></app-users-table>
+    <app-users-table
+      (selectedUsers)="updateSelectedUsers($event)"
+    ></app-users-table>
 
     <footer class="pagination">
       <span class="p2 hint">Pagina 1 de 3</span>

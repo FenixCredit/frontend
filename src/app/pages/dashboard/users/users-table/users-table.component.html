@@ -1,3 +1,27 @@
-<p>
-  users-table works!
-</p>
+<table>
+  <thead>
+    <tr>
+      <th><input type="checkbox" #globalCheck (change)="checkAll()"></th>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Teléfono</th>
+      <th>Ciudad</th>
+      <th>Estatus</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let user of users">
+    <td><input type="checkbox" [checked]="user.checked" id="{{user.id}}" (change)="checkElement($event)"></td>
+    <td>
+      <span>{{user.first_name}} {{user.last_name}}</span>
+    </td>
+    <td><span>{{user.email}}</span></td>
+    <td><span>{{user.cellphone}}</span></td>
+    <td><span>{{user.city}}</span></td>
+    <td class="{{user.status}}"><span></span></td>
+  </tr>
+  <tr *ngIf="users.length == 0">
+    <td colspan="7">
+      <span>No se encontraron resultados</span>
+    </td>
+  </tr>
+</table>
