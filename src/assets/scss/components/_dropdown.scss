@@ -1,0 +1,55 @@
+.dropdown{
+  position: relative;
+
+  &.active{
+    & > .options{
+      display: block;
+    }
+  }
+
+  & > button{
+    @extend .button__large-outline--primary;
+  }
+
+  & > .options{
+    width: 175px;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid map-get($theme-colors, theme-grey);
+    margin-top: 2px;
+    padding: 8px 0px;
+    position: absolute;
+    z-index: 1;
+    display: none;
+
+    *{
+      width: 100%;
+      margin-bottom: 8px;
+    }
+
+    button{
+      @extend .p1;
+      @extend .with-icon-left;
+      border: none;
+      text-align: left;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-left: 48px;
+
+      &:hover{
+        color: map-get($theme-colors, brand-primary);
+        background-color: darken(map-get($theme-colors, theme-white), 5%);
+      }
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+
+    .divider{
+      height: 1px;
+      padding: 0 12px;
+      background-color: map-get($theme-colors, theme-grey);
+      background-clip: content-box;
+    }
+  }
+}

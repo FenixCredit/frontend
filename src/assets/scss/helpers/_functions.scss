@@ -1,0 +1,50 @@
+button, input{
+  &.with-icon{
+    &-left, &-right{
+      background-repeat: no-repeat, repeat;
+      background-size: auto 24px, 100%;
+      background-position-y: 50%, 0;
+    }
+  }
+}
+button{
+  &.with-icon{
+    &-left{
+      padding-left: 30px;
+      background-position-x: 10%, 0;
+    }
+    &-right{
+      padding-right: 30px;
+      background-position-x: 90%, 0;
+    }
+  }
+}
+input{
+  &.with-icon{
+    &-left{
+      padding-left: 48px;
+      background-position-x: 5%, 0;
+    }
+    &-right{
+      padding-right: 48px;
+      background-position-x: 95%, 0;
+    }
+  }
+}
+
+@mixin generate-input-with-icon($icon, $position) {
+  .input__icon-#{$position}--#{$icon} {
+    @extend .with-icon-#{$position};
+    background-image: url("/assets/icons/#{$icon}/default.svg");
+    &:focus{
+      background-image: url("/assets/icons/#{$icon}/focus.svg");
+    }
+  }
+}
+
+@mixin generate-button-with-icon($icon, $type, $position) {
+  .with-icon-#{$position}--#{$icon}-#{$type} {
+    @extend .with-icon-#{$position};
+    background-image: url("/assets/icons/#{$icon}/#{$type}.svg");
+  }
+}
