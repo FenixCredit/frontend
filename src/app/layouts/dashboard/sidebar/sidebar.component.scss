@@ -1,0 +1,109 @@
+@import 'scss/app';
+
+.wrapper{
+  width: 100%;
+  height: 100%;
+  border-right: 2px solid lighten(map-get($theme-colors, theme-default), 70%);
+  display: flex;
+  flex-direction: column;
+
+  header{
+    padding: 24px 30px 40px;
+    border-bottom: 2px solid lighten(map-get($theme-colors, theme-default), 70%);
+    text-align: center;
+
+    figure{
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+
+      img{
+        width: auto;
+        height: auto;
+        max-width: 100%;
+      }
+    }
+
+    span{
+      display: block;
+      text-align: center;
+    }
+
+    label{
+      display: block;
+      text-align: center;
+    }
+  }
+  main, nav{
+    a{
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 15px 0 15px 30px;
+
+      &:hover:not([href]){
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      &::before, &::after{
+        content: "";
+      }
+      &::before{
+        width: 28px;
+        height: 28px;
+        display: inline-block;
+        margin-right: 16px;
+
+        background-repeat: no-repeat, repeat;
+        background-position: 0 50%, 0 0;
+        background-size: 24px auto, 100%;
+      }
+      &::after{
+        width: 80%;
+        height: 1px;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        background: lighten(map-get($theme-colors, theme-default), 70%);
+      }
+      &.active{
+        font-weight: 600;
+        color: map-get($theme-colors, brand-primary);
+        background-color: lighten(map-get($theme-colors, theme-grey), 35%);
+      }
+      &#users{
+        &::before{
+          background-image: url("/assets/icons/users/default.svg");
+        }
+        &.active{
+          &::before{
+            background-image: url("/assets/icons/users/focus.svg");
+          }
+        }
+      }
+      &.generic{
+        &::before{
+          background-image: url("/assets/icons/star/default.svg");
+        }
+        &.active{
+          &::before{
+            background-image: url("/assets/icons/star/focus.svg");
+          }
+        }
+      }
+    }
+  }
+  nav{
+    flex-grow: 1;
+    position: relative;
+
+    footer{
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
+  }
+}
