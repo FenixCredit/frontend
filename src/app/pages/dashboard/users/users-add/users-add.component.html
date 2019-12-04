@@ -1,3 +1,54 @@
-<p>
-  users-add works!
-</p>
+<header>
+  <span class="h5">Nuevo usuario</span>
+  <button type="button" name="exit" (click)="closeWindow.emit(true)"></button>
+</header>
+<main>
+  <section>
+    <h6>Tipo de registro</h6>
+    <div class="control--title">
+      <button type="button" (click)="changeRegisterType($event)" class="button__big active" id="manual">
+        <h4>Registro manual</h4>
+        <span>Da de alta a un usuario tú mismo de forma manual.</span>
+      </button>
+      <button type="button" (click)="changeRegisterType($event)" class="button__big" id="email">
+        <h4>Registro por invitación</h4>
+        <span>Envía uno o varios correos de invitación.</span>
+      </button>
+    </div>
+  </section>
+  <section>
+    <h6>Tipo de usuario</h6>
+    <div class="control--title">
+      <button type="button" (click)="changeUserType($event)" class="button__pill active" id="p_admin">Administrador</button>
+      <button type="button" (click)="changeUserType($event)" class="button__pill" id="p_promoter">Promotor</button>
+      <button type="button" (click)="changeUserType($event)" class="button__pill" id="p_accredited">Acreditado</button>
+    </div>
+  </section>
+  <section *ngIf="selectedRegisterType == 1; else emailBlock;">
+    <div [ngSwitch]="selectedUserType">
+
+
+      <form *ngSwitchCase="1">
+        registremos un administrador
+      </form>
+
+
+      <form *ngSwitchCase="2">
+        registremos un promotor
+      </form>
+
+
+      <form *ngSwitchCase="3">
+        registremos un acreditado
+      </form>
+
+
+    </div>
+  </section>
+  <ng-template #emailBlock>
+    <section>
+      <p>email</p>
+    </section>
+  </ng-template>
+
+</main>

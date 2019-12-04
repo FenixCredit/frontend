@@ -64,4 +64,10 @@
       </button>
     </footer>
   </main>
+
+  <aside [hidden]="!addWindowOpened">
+    <app-users-add
+      (closeWindow)="closeAddWindow()"
+    ></app-users-add>
+  </aside>
 </section>

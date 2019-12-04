@@ -12,6 +12,7 @@ import { UsersTableComponent } from './users-table/users-table.component';
 export class UsersComponent implements OnInit {
 
   selectedTab: number;
+  addWindowOpened: boolean;
   selectedUsers: Array<any>;
   @ViewChild(UsersTableComponent) table: UsersTableComponent;
 
@@ -21,6 +22,7 @@ export class UsersComponent implements OnInit {
   ) {
     this.selectedTab = 1;
     this.selectedUsers = [];
+    this.addWindowOpened = true;
   }
 
   ngOnInit() {
@@ -59,6 +61,10 @@ export class UsersComponent implements OnInit {
 
   updateSelectedUsers(users: Array<any>){
     this.selectedUsers = users;
+  }
+
+  closeAddWindow(){
+    this.addWindowOpened = false;
   }
 
 }
