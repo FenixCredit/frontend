@@ -1,10 +1,22 @@
 <div class="background">
   <div class="dialog">
     <h1>Fenix</h1>
-    <form class="form">
+    <div class="error" [hidden]="!showErrorMessage">
+      <p class="c1 alternative" *ngIf="loginTries < 3; else tooManyTries">
+        El correo o contraseña que ingresaste es inválida. <br>
+        Por favor revísalo e intentalo de nuevo.
+      </p>
+      <ng-template #tooManyTries>
+        <p class="c1 alternative">
+          Parece que has realizado muchos intentos sin éxito, <br>
+          recuerda que siempre puedes <a class="c1 alternative" routerLink="recover-password">recuperar tu contraseña.</a>
+        </p>
+      </ng-template>
+    </div>
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
       <h6>Iniciar sesión</h6>
-      <input type="text" placeholder="Correo electrónico">
-      <input type="text" placeholder="Contraseña">
+      <input type="text" placeholder="Correo electrónico" formControlName="email" #email (click)="removeClass($event.target, 'danger')" (input)="showErrorMessage = false">
+      <input type="text" placeholder="Contraseña" formControlName="password" #password (click)="removeClass($event.target, 'danger')" (input)="showErrorMessage = false">
       <a routerLink="forgot-password">Olvidé mi contraseña</a>
       <button type="submit" class="button__large-fill--primary">Entrar</button>
     </form>

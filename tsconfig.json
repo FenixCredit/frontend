@@ -5,7 +5,7 @@
     "paths": {
       "@assets/*": ["src/assets/*"],
       "@environments/*": ["src/environments/*"],
-      "@layout/*": ["src/app/layout/*"],
+      "@layouts/*": ["src/app/layouts/*"],
       "@models/*": ["src/app/models/*"],
       "@pages/*": ["src/app/pages/*"],
       "@shared/*": ["src/app/shared/*"]

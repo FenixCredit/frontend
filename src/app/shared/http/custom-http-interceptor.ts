@@ -30,15 +30,16 @@ export class CustomHttpInterceptor implements HttpInterceptor {
     }
 
     // Get User token
-    if (this.cookie.getObject('doctu-t')) {
+    if (this.cookie.getObject('fenix-t')) {
       authReq = authReq.clone({
         headers: authReq.headers
           .append('Authorization', this.cookie.get('fenix-t'))
       });
     }
-
+    console.log("todo bien")
     // send the newly created request
     return next.handle(authReq).catch((error, caught) => {
+      console.log(error);
       return Observable.throw(error);
     }) as any;
   }

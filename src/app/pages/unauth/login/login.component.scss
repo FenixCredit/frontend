@@ -23,6 +23,23 @@
       margin-bottom: 64px;
     }
 
+    .error{
+      width: 100%;
+      background-color: map-get($theme-colors, semantic-danger);
+      border-radius: 4px;
+      margin-bottom: 16px;
+      padding: 12px 32px 8px;
+      background-image: url("/assets/icons/info/white.svg");
+      background-repeat: no-repeat, repeat;
+      background-size: auto 16px, 100%;
+      background-position-y: 50%, 0;
+      background-position-x: 3%, 0;
+
+      p{
+        margin-bottom: 0;
+      }
+    }
+
     .form{
       *{
         display: block;
