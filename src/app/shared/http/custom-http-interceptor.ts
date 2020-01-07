@@ -5,6 +5,7 @@ import { _throw as throwError } from 'rxjs/observable/throw';
 import { catchError } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie';
 import { TranslateService } from '@ngx-translate/core';
+import jwt_decode from 'jwt-decode';
 
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {
@@ -36,7 +37,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
           .append('Authorization', this.cookie.get('fenix-t'))
       });
     }
-    console.log("todo bien")
+    console.log(jwt_decode(this.cookie.get('fenix-t')))
     // send the newly created request
     return next.handle(authReq).catch((error, caught) => {
       console.log(error);
