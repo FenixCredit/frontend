@@ -7,6 +7,8 @@ interface EmployeeInterface {
   email: string;
   contract: string;
   picture: string;
+  salary: number;
+  address: string;
   status: number;
   user: User;
   admin: Admin;
@@ -21,6 +23,8 @@ export class Employee implements EmployeeInterface {
   email: string = '';
   contract: string = '';
   picture: string = '';
+  salary: number = 0.0;
+  address: string = '';
   status: number = 1;
   user: User = new User();
   admin: Admin = new Admin();

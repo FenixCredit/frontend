@@ -1,0 +1,21 @@
+@import 'scss/app';
+
+td{
+  &.enabled:last-child{
+    &::before{
+      background-color: map-get($theme-colors, semantic-success);
+    }
+    span::before{
+      content: "Activo"
+    }
+  }
+
+  &.disabled:last-child{
+    &::before{
+      background-color: map-get($theme-colors, theme-grey);
+    }
+    span::before{
+      content: "Inactivo"
+    }
+  }
+}

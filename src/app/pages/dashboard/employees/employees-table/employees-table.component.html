@@ -1,3 +1,29 @@
-<p>
-  employees-table works!
-</p>
+<table>
+  <thead>
+    <tr>
+      <th><input type="checkbox" #globalCheck (change)="checkAll()"></th>
+      <th>Nombre</th>
+      <th>Dirección</th>
+      <th>Teléfono</th>
+      <th>Rol</th>
+      <th>Salario</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let e of employees">
+    <td><input type="checkbox" [checked]="e.checked" id="{{e.id}}" (change)="checkElement($event)"></td>
+    <td>
+      <span>{{e.user.first_name}} {{e.user.last_name}}</span>
+    </td>
+    <td><span>{{e.address}}</span></td>
+    <td><span>{{e.user.phone}}</span></td>
+    <td><span>{{e.role.name}}</span></td>
+    <td><span>${{e.salary}}</span></td>
+    <td class="{{e.status}}"><span></span></td>
+  </tr>
+  <tr *ngIf="employees.length == 0">
+    <td colspan="7">
+      <span>No se encontraron resultados</span>
+    </td>
+  </tr>
+</table>
