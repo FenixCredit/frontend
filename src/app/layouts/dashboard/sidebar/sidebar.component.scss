@@ -74,23 +74,93 @@
         color: map-get($theme-colors, brand-secondary);
         background-color: lighten(map-get($theme-colors, theme-grey), 35%);
       }
-      &#users{
+      &#statistics{
         &::before{
-          background-image: url("/assets/icons/users/default.svg");
+          background-image: url("/assets/icons/chart/default.svg");
         }
         &.active{
           &::before{
-            background-image: url("/assets/icons/users/active.svg");
+            background-image: url("/assets/icons/chart/active.svg");
           }
         }
       }
-      &.generic{
+      &#users{
+        &::before{
+          background-image: url("/assets/icons/accredited/default.svg");
+        }
+        &.active{
+          &::before{
+            background-image: url("/assets/icons/accredited/active.svg");
+          }
+        }
+      }
+      &#promoters{
+        &::before{
+          background-image: url("/assets/icons/promoter/default.svg");
+        }
+        &.active{
+          &::before{
+            background-image: url("/assets/icons/promoter/active.svg");
+          }
+        }
+      }
+      &#credits{
+        &::before{
+          background-image: url("/assets/icons/credit/default.svg");
+        }
+        &.active{
+          &::before{
+            background-image: url("/assets/icons/credit/active.svg");
+          }
+        }
+      }
+      &#payments{
+        &::before{
+          background-image: url("/assets/icons/payment/default.svg");
+        }
+        &.active{
+          &::before{
+            background-image: url("/assets/icons/payment/active.svg");
+          }
+        }
+      }
+      &#admins{
         &::before{
           background-image: url("/assets/icons/star/default.svg");
         }
         &.active{
           &::before{
             background-image: url("/assets/icons/star/active.svg");
+          }
+        }
+      }
+      &#employees{
+        &::before{
+          background-image: url("/assets/icons/employee/default.svg");
+        }
+        &.active{
+          &::before{
+            background-image: url("/assets/icons/employee/active.svg");
+          }
+        }
+      }
+      &#equipment{
+        &::before{
+          background-image: url("/assets/icons/product/default.svg");
+        }
+        &.active{
+          &::before{
+            background-image: url("/assets/icons/product/active.svg");
+          }
+        }
+      }
+      &#logout{
+        &::before{
+          background-image: url("/assets/icons/logout/default.svg");
+        }
+        &.active{
+          &::before{
+            background-image: url("/assets/icons/logout/active.svg");
           }
         }
       }
