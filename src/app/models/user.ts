@@ -1,13 +1,21 @@
 interface UserInterface {
-  email: string;
+  id: string;
   first_name: string;
   last_name: string;
-  role: string;
+  phone: string;
+  gender: number;
+  birthday: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export class User implements UserInterface {
-  email: string = '';
+  id: string = '';
   first_name: string = '';
   last_name: string = '';
-  role: string = '';
+  phone: string = '';
+  gender: number = 0;
+  birthday: string = '';
+  created_at: string = '';
+  updated_at: string = '';
 }
