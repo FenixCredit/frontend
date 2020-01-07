@@ -22,7 +22,7 @@ export class UsersComponent implements OnInit {
   ) {
     this.selectedTab = 1;
     this.selectedUsers = [];
-    this.addWindowOpened = true;
+    this.addWindowOpened = false;
   }
 
   ngOnInit() {

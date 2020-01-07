@@ -5,19 +5,17 @@
       <th>Nombre</th>
       <th>Correo</th>
       <th>Teléfono</th>
-      <th>Ciudad</th>
-      <th>Estatus</th>
+      <th>Género</th>
     </tr>
   </thead>
-  <tr *ngFor="let user of users">
-    <td><input type="checkbox" [checked]="user.checked" id="{{user.id}}" (change)="checkElement($event)"></td>
+  <tr *ngFor="let u of users">
+    <td><input type="checkbox" [checked]="u.checked" id="{{u.id}}" (change)="checkElement($event)"></td>
     <td>
-      <span>{{user.first_name}} {{user.last_name}}</span>
+      <span>{{u.user.first_name}} {{u.user.last_name}}</span>
     </td>
-    <td><span>{{user.email}}</span></td>
-    <td><span>{{user.cellphone}}</span></td>
-    <td><span>{{user.city}}</span></td>
-    <td class="{{user.status}}"><span></span></td>
+    <td><span>{{u.email}}</span></td>
+    <td><span>{{u.user.phone}}</span></td>
+    <td><span>{{u.user.gender}}</span></td>
   </tr>
   <tr *ngIf="users.length == 0">
     <td colspan="7">

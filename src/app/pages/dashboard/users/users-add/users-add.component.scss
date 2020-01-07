@@ -51,9 +51,41 @@ main{
       &--label, &--title{
         margin-bottom: 24px;
         display: inline-block;
+        width: 100%;
 
         label{
           color: map-get($theme-colors, theme-default);
+        }
+
+        select{
+          height: 48px;
+          min-width: 231px;
+          padding: 9px 8px 9px 12px;
+          border: 1px #eaebec solid;
+          border-radius: 4px;
+          font-size: 14px;
+          line-height: 22px;
+          letter-spacing: 0.2px;
+          background-color: #fff;
+        }
+
+        &[name="phone"]{
+          width: 256px;
+          min-width: 256px;
+          margin-right: 28px;
+
+          #phone{
+            min-width: 256px;
+          }
+        }
+
+        &[name="gender"]{
+          width: 150px;
+          min-width: 150px;
+
+          #gender{
+            min-width: 150px;
+          }
         }
       }
 
@@ -118,7 +150,22 @@ main{
             @extend .bc-primary-fill;
           }
         }
+
+        input{
+          width: 100%;
+        }
       }
     }
+  }
+}
+
+footer{
+  width: 100%;
+  text-align: right;
+  padding: 15px 30px;
+  border-top: 1px solid map-get($theme-colors, system-grey);
+
+  button:first-child{
+    margin-right: 24px;
   }
 }

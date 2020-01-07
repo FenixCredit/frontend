@@ -17,6 +17,7 @@ export class UsersTableComponent implements OnInit {
   constructor(
     private _users: UsersService
   ) {
+    this.users = [];
     this.selectedUsers = new EventEmitter<Array<any>>();
     this.getUsers(1);
   }
@@ -27,35 +28,19 @@ export class UsersTableComponent implements OnInit {
   getUsers(role: number){
     switch(role){
       case 1:
-        this.users = [
-          {
-            id: 1,
-            first_name: "Gerardo",
-            last_name: "Soriano",
-            email: "gerardosoriano97@gmail.com",
-            cellphone: "8282810966",
-            city: "Monterrey",
-            status: "active",
-            checked: false
-          }
-        ];
+        this._users.getAdmins().subscribe(response => {
+          this.users = response["admins"]
+        })
         break;
       case 2:
-        this.users = [
-          {
-            id: 2,
-            first_name: "Pedro",
-            last_name: "Ramirez",
-            email: "p.ramirez@gmail.com",
-            cellphone: "8112978944",
-            city: "Monterrey",
-            status: "inactive",
-            checked: false
-          }
-        ];
+        this._users.getEmployees().subscribe(response => {
+          this.users = response["employees"]
+        })
         break;
       case 3:
-        this.users = []
+        this._users.getClients().subscribe(response => {
+          this.users = response["clients"]
+        })
         break;
     }
   }
