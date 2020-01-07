@@ -1,3 +1,82 @@
-<p>
-  promoters-add works!
-</p>
+<header>
+  <span class="h5">Nuevo promotor</span>
+  <button type="button" name="exit" (click)="closeWindow.emit(true)"></button>
+</header>
+<main>
+  <section>
+    <h6>Tipo de registro</h6>
+    <div class="control--title">
+      <button type="button" (click)="changeRegisterType($event)" class="button__big active" id="manual">
+        <h4>Registro manual</h4>
+        <span>Da de alta a un promotor tú mismo de forma manual.</span>
+      </button>
+      <button type="button" (click)="changeRegisterType($event)" class="button__big" id="email">
+        <h4>Registro por invitación</h4>
+        <span>Envía uno o varios correos de invitación.</span>
+      </button>
+    </div>
+  </section>
+  <section *ngIf="selectedRegisterType == 1; else emailBlock;">
+    <form [formGroup]="promoterForm">
+      <section formGroupName="user">
+        <h4 class="s1">Información del Usuario</h4>
+
+        <div class="control--title">
+          <label for="first_name">Nombre(s)</label>
+          <input type="text" id="first_name" formControlName="first_name" placeholder="ej. Alicia Hernández">
+        </div>
+
+        <div class="control--title">
+          <label for="last_name">Apellido(s)</label>
+          <input type="text" id="last_name" formControlName="last_name" placeholder="ej. Alicia Hernández">
+        </div>
+
+        <div class="control--title" name="phone">
+          <label for="phone">Teléfono</label>
+          <input type="text" id="phone" formControlName="phone" placeholder="ej. alicia.hernandez@gmail.com">
+        </div>
+
+        <div class="control--title" name="gender">
+          <label for="gender">Sexo</label>
+          <select id="gender" formControlName="gender">
+            <option value="male">Hombre</option>
+            <option value="female">Mujer</option>
+          </select>
+        </div>
+
+        <div class="control--title">
+          <label for="birthday">Fecha de nacimiento</label>
+          <input type="date" id="birthday" formControlName="birthday">
+        </div>
+      </section>
+
+      <section>
+        <h4 class="s1">Información del promotor</h4>
+
+        <div class="control--title">
+          <label for="alias">Alias</label>
+          <input type="text" id="alias" formControlName="alias" placeholder="ej. Doña María">
+        </div>
+
+        <div class="control--title">
+          <label for="address">Dirección</label>
+          <input type="text" id="address" formControlName="address" placeholder="ej. Miguel Hidalgo #112">
+        </div>
+
+        <div class="control--title">
+          <label for="comission">Comisión</label>
+          <input type="number" id="comission" formControlName="comission">
+        </div>
+      </section>
+    </form>
+  </section>
+  <ng-template #emailBlock>
+    <section>
+      <p>email</p>
+    </section>
+  </ng-template>
+</main>
+<footer>
+    <button type="button" class="button__medium-outline--primary">Cancelar</button>
+    <button type="submit" class="button__medium-fill--primary" (click)="onSubmit()">Terminar</button>
+</footer>

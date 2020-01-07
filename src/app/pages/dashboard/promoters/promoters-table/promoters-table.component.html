@@ -1,3 +1,27 @@
-<p>
-  promoters-table works!
-</p>
+<table>
+  <thead>
+    <tr>
+      <th><input type="checkbox" #globalCheck (change)="checkAll()"></th>
+      <th>Nombre</th>
+      <th>Dirección</th>
+      <th>Teléfono</th>
+      <th>Comisión</th>
+      <th>A cargo</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let p of promoters">
+    <td><input type="checkbox" [checked]="p.checked" id="{{p.id}}" (change)="checkElement($event)"></td>
+    <td>
+      <span>{{p.user.first_name}} {{p.user.last_name}}</span>
+    </td>
+    <td><span>{{p.address}}</span></td>
+    <td><span>{{p.user.phone}}</span></td>
+    <td><span>{{p.comission}}%</span></td>
+    <td><span>{{p.employee.email}}</span></td>
+  </tr>
+  <tr *ngIf="promoters.length == 0">
+    <td colspan="5">
+      <span>No se encontraron resultados</span>
+    </td>
+  </tr>
+</table>

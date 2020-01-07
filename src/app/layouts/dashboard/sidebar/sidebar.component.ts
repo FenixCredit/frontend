@@ -34,7 +34,6 @@ export class SidebarComponent implements OnInit {
   getProfile(){
     this._dashboard.getProfile().subscribe(data => {
       this.admin = data["admin"];
-      console.log(this.admin)
     });
   }
 
@@ -42,8 +41,6 @@ export class SidebarComponent implements OnInit {
     this.routes.forEach((route) => {
       this.renderer.removeClass(route.nativeElement, 'active');
     })
-
-    console.log(element)
 
     this.renderer.addClass(element, 'active');
     this.router.navigate([

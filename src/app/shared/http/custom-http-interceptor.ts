@@ -32,12 +32,12 @@ export class CustomHttpInterceptor implements HttpInterceptor {
 
     // Get User token
     if (this.cookie.getObject('fenix-t')) {
+      let data = jwt_decode(this.cookie.get('fenix-t'));
       authReq = authReq.clone({
         headers: authReq.headers
-          .append('Authorization', this.cookie.get('fenix-t'))
+          .append('Authorization', data.token)
       });
     }
-    console.log(jwt_decode(this.cookie.get('fenix-t')))
     // send the newly created request
     return next.handle(authReq).catch((error, caught) => {
       console.log(error);
