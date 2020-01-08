@@ -1,3 +1,27 @@
-<p>
-  admins-table works!
-</p>
+<table>
+  <thead>
+    <tr>
+      <th><input type="checkbox" #globalCheck (change)="checkAll()"></th>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Teléfono</th>
+      <th>Género</th>
+      <th>Fecha de nacimiento</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let a of admins">
+    <td><input type="checkbox" [checked]="a.checked" id="{{a.id}}" (change)="checkElement($event)"></td>
+    <td>
+      <span>{{a.user.first_name}} {{a.user.last_name}}</span>
+    </td>
+    <td><span>{{a.email}}</span></td>
+    <td><span>{{a.user.phone}}</span></td>
+    <td><span>{{a.user.gender}}</span></td>
+    <td><span>{{a.user.birthday}}</span></td>
+  </tr>
+  <tr *ngIf="admins.length == 0">
+    <td colspan="7">
+      <span>No se encontraron resultados</span>
+    </td>
+  </tr>
+</table>
