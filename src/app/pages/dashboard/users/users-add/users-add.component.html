@@ -16,171 +16,59 @@
       </button>
     </div>
   </section>
-  <section>
-    <h6>Tipo de usuario</h6>
-    <div class="control--title">
-      <button type="button" (click)="changeUserType($event)" class="button__pill active" id="p_admin">Administrador</button>
-      <button type="button" (click)="changeUserType($event)" class="button__pill" id="p_promoter">Promotor</button>
-      <button type="button" (click)="changeUserType($event)" class="button__pill" id="p_accredited">Acreditado</button>
-    </div>
-  </section>
   <section *ngIf="selectedRegisterType == 1; else emailBlock;">
-    <div [ngSwitch]="selectedUserType">
+    <form [formGroup]="userForm">
+      <section formGroupName="user">
+        <h4 class="s1">Información del Usuario</h4>
 
+        <div class="control--title">
+          <label for="first_name">Nombre(s)</label>
+          <input type="text" id="first_name" formControlName="first_name" placeholder="ej. Alicia Hernández">
+        </div>
 
-      <form *ngSwitchCase="1">
-        <section>
-          <h4 class="s1">Información del Usuario</h4>
+        <div class="control--title">
+          <label for="last_name">Apellido(s)</label>
+          <input type="text" id="last_name" formControlName="last_name" placeholder="ej. Alicia Hernández">
+        </div>
 
-          <div class="control--title">
-            <label for="first_name">Nombre(s)</label>
-            <input type="text" id="first_name" placeholder="ej. Alicia Hernández">
-          </div>
+        <div class="control--title" name="phone">
+          <label for="phone">Teléfono</label>
+          <input type="text" id="phone" formControlName="phone" placeholder="ej. alicia.hernandez@gmail.com">
+        </div>
 
-          <div class="control--title">
-            <label for="last_name">Apellido(s)</label>
-            <input type="text" id="last_name" placeholder="ej. Alicia Hernández">
-          </div>
+        <div class="control--title" name="gender">
+          <label for="gender">Sexo</label>
+          <select id="gender" formControlName="gender">
+            <option value="male">Hombre</option>
+            <option value="female">Mujer</option>
+          </select>
+        </div>
 
-          <div class="control--title" name="phone">
-            <label for="phone">Teléfono</label>
-            <input type="text" id="phone" placeholder="ej. alicia.hernandez@gmail.com">
-          </div>
+        <div class="control--title">
+          <label for="birthday">Fecha de nacimiento</label>
+          <input type="date" id="birthday" formControlName="birthday">
+        </div>
+      </section>
 
-          <div class="control--title" name="gender">
-            <label for="gender">Sexo</label>
-            <select id="gender">
-              <option value="1">Hombre</option>
-              <option value="2">Mujer</option>
-            </select>
-          </div>
+      <section>
+        <h4 class="s1">Información del Cliente</h4>
 
-          <div class="control--title">
-            <label for="birthday">Fecha de nacimiento</label>
-            <input type="date" id="birthday">
-          </div>
-        </section>
+        <div class="control--title">
+          <label for="street">Dirección</label>
+          <input type="text" id="street" placeholder="ej. Pinewood St.">
+        </div>
 
-        <section>
-          <h4 class="s1">Información del Administrador</h4>
+        <div class="control--title">
+          <label for="ex_number">Número exterior</label>
+          <input type="number" id="ex_number" placeholder="ej. 1500">
+        </div>
 
-          <div class="control--title">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="user@gmail.com">
-          </div>
-
-          <div class="control--title">
-            <label for="password">Apellido(s)</label>
-            <input type="text" id="password" placeholder="ej. Algo secreto">
-          </div>
-        </section>
-      </form>
-
-
-      <form *ngSwitchCase="2">
-        <section>
-          <h4 class="s1">Información del Usuario</h4>
-
-          <div class="control--title">
-            <label for="first_name">Nombre(s)</label>
-            <input type="text" id="first_name" placeholder="ej. Alicia Hernández">
-          </div>
-
-          <div class="control--title">
-            <label for="last_name">Apellido(s)</label>
-            <input type="text" id="last_name" placeholder="ej. Alicia Hernández">
-          </div>
-
-          <div class="control--title" name="phone">
-            <label for="phone">Teléfono</label>
-            <input type="text" id="phone" placeholder="ej. alicia.hernandez@gmail.com">
-          </div>
-
-          <div class="control--title" name="gender">
-            <label for="gender">Sexo</label>
-            <select id="gender">
-              <option value="1">Hombre</option>
-              <option value="2">Mujer</option>
-            </select>
-          </div>
-
-          <div class="control--title">
-            <label for="birthday">Fecha de nacimiento</label>
-            <input type="date" id="birthday">
-          </div>
-        </section>
-
-        <section>
-          <h4 class="s1">Información del Promotor</h4>
-
-          <div class="control--title">
-            <label for="aka">A.K.A</label>
-            <input type="text" id="aka" placeholder="ej. María">
-          </div>
-
-          <div class="control--title">
-            <label for="contract">Contrato</label>
-            <input type="text" id="contract" placeholder="ej. Documento">
-          </div>
-        </section>
-      </form>
-
-
-      <form *ngSwitchCase="3">
-        <section>
-          <h4 class="s1">Información del Usuario</h4>
-
-          <div class="control--title">
-            <label for="first_name">Nombre(s)</label>
-            <input type="text" id="first_name" placeholder="ej. Alicia Hernández">
-          </div>
-
-          <div class="control--title">
-            <label for="last_name">Apellido(s)</label>
-            <input type="text" id="last_name" placeholder="ej. Alicia Hernández">
-          </div>
-
-          <div class="control--title" name="phone">
-            <label for="phone">Teléfono</label>
-            <input type="text" id="phone" placeholder="ej. alicia.hernandez@gmail.com">
-          </div>
-
-          <div class="control--title" name="gender">
-            <label for="gender">Sexo</label>
-            <select id="gender">
-              <option value="1">Hombre</option>
-              <option value="2">Mujer</option>
-            </select>
-          </div>
-
-          <div class="control--title">
-            <label for="birthday">Fecha de nacimiento</label>
-            <input type="date" id="birthday">
-          </div>
-        </section>
-
-        <section>
-          <h4 class="s1">Información del Cliente</h4>
-
-          <div class="control--title">
-            <label for="street">Dirección</label>
-            <input type="text" id="street" placeholder="ej. Pinewood St.">
-          </div>
-
-          <div class="control--title">
-            <label for="ex_number">Número exterior</label>
-            <input type="number" id="ex_number" placeholder="ej. 1500">
-          </div>
-
-          <div class="control--title">
-            <label for="in_number">Número interior</label>
-            <input type="number" id="in_number" placeholder="ej. 1700">
-          </div>
-        </section>
-      </form>
-
-
-    </div>
+        <div class="control--title">
+          <label for="in_number">Número interior</label>
+          <input type="number" id="in_number" placeholder="ej. 1700">
+        </div>
+      </section>
+    </form>
   </section>
   <ng-template #emailBlock>
     <section>
@@ -191,5 +79,5 @@
 </main>
 <footer>
     <button type="button" class="button__medium-outline--primary">Cancelar</button>
-    <button type="submit" class="button__medium-fill--primary">Terminar</button>
+    <button type="submit" class="button__medium-fill--primary" (click)="onSubmit()">Terminar</button>
 </footer>

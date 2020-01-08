@@ -26,23 +26,9 @@ export class UsersTableComponent implements OnInit {
   }
 
   getUsers(role: number){
-    switch(role){
-      case 1:
-        this._users.getAdmins().subscribe(response => {
-          this.users = response["admins"]
-        })
-        break;
-      case 2:
-        this._users.getEmployees().subscribe(response => {
-          this.users = response["employees"]
-        })
-        break;
-      case 3:
-        this._users.getClients().subscribe(response => {
-          this.users = response["clients"]
-        })
-        break;
-    }
+    this._users.getClients().subscribe(response => {
+      this.users = response["clients"]
+    })
   }
 
   updateSelectedUsers(){

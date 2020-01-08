@@ -53,10 +53,10 @@
   }
 
   main{
-    .stats{
+    .action-bar{
       display: grid;
       grid-gap: 1px;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 4fr;
       background-color: map-get($theme-colors, theme-grey);
       border: 1px solid map-get($theme-colors, theme-grey);
       border-bottom: 0;
@@ -73,19 +73,8 @@
         background-size: 24px auto, 100%;
         background-position-y: 50%, 0;
         background-position-x: 32px, 0;
-        &#admin{
-          background-image: url("/assets/icons/employee/default.svg");
-          &.active{
-            background-image: url("/assets/icons/employee/active.svg");
-          }
-        }
-        &#promoter{
-          background-image: url("/assets/icons/promoter/default.svg");
-          &.active{
-            background-image: url("/assets/icons/promoter/active.svg");
-          }
-        }
-        &#accredited{
+        border-bottom: 1px solid map-get($theme-colors, theme-grey);
+        &#total{
           background-image: url("/assets/icons/accredited/default.svg");
           &.active{
             background-image: url("/assets/icons/accredited/active.svg");
@@ -104,35 +93,44 @@
           width: 100%;
           margin-bottom: 0;
         }
-      }
-    }
+        &#controls{
+          height: 70px;
+          display: flex;
+          justify-content: flex-end;
+          padding-left: 16px;
+          padding-right: 16px;
+          align-items: center;
+          background-color: #fff;
 
-    .action-bar{
-      height: 70px;
-      display: flex;
-      padding-left: 16px;
-      padding-right: 16px;
-      align-items: center;
-      background-color: #fff;
-      border: 1px solid map-get($theme-colors, theme-grey);
+          & > *{
+            margin-bottom: 0;
+            margin-right: 24px;
+          }
 
-      & > *{
-        margin-bottom: 0;
-        margin-right: 24px;
-      }
+          *{
+            pointer-events: auto;
+          }
 
-      .white-space{
-        margin: 0;
-        flex-grow: 1;
-      }
+          p{
+            width: auto;
+          }
 
-      @include generate-input-with-icon(search, right);
+          @include generate-input-with-icon(search, right);
 
-      .action{
-        background-image: url('/assets/icons/star/default.svg');
+          #print{
+            background-image: url('/assets/icons/printer/default.svg');
 
-        &:hover{
-          background-image: url('/assets/icons/star/focus.svg');
+            &:hover{
+              background-image: url('/assets/icons/printer/focus.svg');
+            }
+          }
+          #favourite{
+            background-image: url('/assets/icons/star/default.svg');
+
+            &:hover{
+              background-image: url('/assets/icons/star/focus.svg');
+            }
+          }
         }
       }
     }

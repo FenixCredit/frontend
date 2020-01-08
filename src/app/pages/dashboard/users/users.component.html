@@ -11,42 +11,31 @@
     <button type="button" class="button__large-fill--primary with-icon-left--plus-white" (click)="addWindowOpened=!addWindowOpened">Nuevo</button>
   </header>
   <main>
-    <nav class="stats">
-      <section (click)="changeTab($event)" id="admin" class="active">
-        <p class="h6">10</p>
-        <p class="c1">Administradores</p>
-      </section>
-      <section (click)="changeTab($event)" id="promoter">
-        <p class="h6">20</p>
-        <p class="c1">Promotores</p>
-      </section>
-      <section (click)="changeTab($event)" id="accredited">
-        <p class="h6">300</p>
-        <p class="c1">Acreditados</p>
-      </section>
-    </nav>
-
     <section class="action-bar">
-      <p class="p2"
-        [hidden]="selectedUsers.length == 0">
-        {{selectedUsers.length}} seleccionados
-      </p>
+      <section id="total" class="active">
+        <p class="h6">20</p>
+        <p class="c1">Total</p>
+      </section>
 
-      <div class="white-space"></div>
+      <section id="controls">
+        <p class="p2"
+          [hidden]="selectedUsers.length == 0">
+          {{selectedUsers.length}} seleccionados
+        </p>
 
-      <input type="text" class="input__icon-right--search" placeholder="Buscar">
-      <button type="button" class="button__large-outline--primary">Filtros</button>
+        <input type="text" class="input__icon-right--search" placeholder="Buscar">
 
-      <div class="dropdown" id="actions">
-        <button type="button" (click)="toggleDropdown($event)">Acciones</button>
+        <button type="button" class="button__large-outline--primary" (click)="filterWindowOpened=!filterWindowOpened">Filtros</button>
 
-        <div class="options">
-          <button type="button" class="action">Acción 1</button>
-          <button type="button" class="action">Acción 2</button>
+        <div class="dropdown" id="actions" #dropdown>
+          <button type="button" (click)="toggleDropdown($event)">Acciones</button>
+
+          <div class="options">
+            <button type="button" id="print" (click)="openCancelModal(dropdown)">Imprimir</button>
+            <button type="button" id="favourite" (click)="openFavoriteModal(dropdown)">Agregar a favoritos</button>
+          </div>
         </div>
-      </div>
-
-      <button type="button" class="button__large-outline--primary">Más recientes</button>
+      </section>
     </section>
 
     <app-users-table

@@ -1,6 +1,12 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
-import { Output, EventEmitter } from '@angular/core';
+import {
+  Component, OnInit,
+  Output, EventEmitter,
+  Renderer2
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { UsersService } from '../users.service';
+
 
 @Component({
   selector: 'app-users-add',
@@ -11,7 +17,7 @@ export class UsersAddComponent implements OnInit {
 
   selectedRegisterType: number;
   selectedUserType: number;
-  adminForm: FormGroup;
+  userForm: FormGroup;
   @Output() closeWindow;
 
   constructor(
@@ -20,14 +26,19 @@ export class UsersAddComponent implements OnInit {
   ) {
     this.selectedRegisterType = 1;
     this.selectedUserType = 1;
-    this.adminForm = this.formBuilder.group({
+    this.userForm = this.formBuilder.group({
       type: [1],
-      first_name: [null, [Validators.required]],
-      last_name: [null, [Validators.required]],
-      email: [null, [Validators.required]],
-      phone: [null],
-      birthday: [null],
-      password: [Math.random().toString(36).substring(7), [Validators.required]]
+      user: this.formBuilder.group({
+        first_name: [null, [Validators.required]],
+        last_name: [null, [Validators.required]],
+        phone: [null],
+        gender: ["male"],
+        birthday: [null]
+      }),
+      alias: [null],
+      contract: [null],
+      address: [null],
+      comission: [7.0],
     });
     this.closeWindow = new EventEmitter<boolean>();
   }
