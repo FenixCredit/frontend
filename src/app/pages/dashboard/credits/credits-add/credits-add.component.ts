@@ -111,63 +111,63 @@ export class CreditsAddComponent implements OnInit {
   onSubmit(){
     this.creditData.append(
       'loan[quantity]',
-      this.creditForm.get('loan').get('quantity').value
+      this.creditForm.get(['loan', 'quantity']).value
     );
     this.creditData.append(
       'loan[period]',
-      this.creditForm.get('loan').get('period').value
+      this.creditForm.get(['loan', 'period']).value
     );
     this.creditData.append(
       'loan[client_id]',
-      this.creditForm.get('loan').get('client_id').value
+      this.creditForm.get(['loan', 'client_id']).value
     );
     this.creditData.append(
       'loan[promissory_note][code]',
-      this.creditForm.get('promissory_note').get('code').value
+      this.creditForm.get(['promissory_note', 'code']).value
     );
     this.creditData.append(
       'loan[guarantee][id]',
-      this.creditForm.get('guarantee').get('id').value
+      this.creditForm.get(['guarantee', 'id']).value
     );
     this.creditData.append(
       'loan[guarantee][is_favourite]',
-      this.creditForm.get('guarantee').get('is_favourite').value
+      this.creditForm.get(['guarantee', 'is_favourite']).value
     );
     this.creditData.append(
       'loan[guarantee][street]',
-      this.creditForm.get('guarantee').get('street').value
+      this.creditForm.get(['guarantee', 'street']).value
     );
     this.creditData.append(
       'loan[guarantee][external_number]',
-      this.creditForm.get('guarantee').get('external_number').value
+      this.creditForm.get(['guarantee', 'external_number']).value
     );
     this.creditData.append(
       'loan[guarantee][internal_number]',
-      this.creditForm.get('guarantee').get('internal_number').value
+      this.creditForm.get(['guarantee', 'internal_number']).value
     );
     this.creditData.append(
       'loan[guarantee][colony]',
-      this.creditForm.get('guarantee').get('colony').value
+      this.creditForm.get(['guarantee', 'colony']).value
     );
     this.creditData.append(
       'loan[guarantee][user][first_name]',
-      this.creditForm.get('guarantee').get('user').get('first_name').value
+      this.creditForm.get(['guarantee', 'user', 'first_name']).value
     );
     this.creditData.append(
       'loan[guarantee][user][last_name]',
-      this.creditForm.get('guarantee').get('user').get('last_name').value
+      this.creditForm.get(['guarantee', 'user', 'last_name']).value
     );
     this.creditData.append(
       'loan[guarantee][user][phone]',
-      this.creditForm.get('guarantee').get('user').get('phone').value
+      this.creditForm.get(['guarantee', 'user', 'phone']).value
     );
     this.creditData.append(
       'loan[guarantee][user][gender]',
-      this.creditForm.get('guarantee').get('user').get('gender').value
+      this.creditForm.get(['guarantee', 'user', 'gender']).value
     );
     this.creditData.append(
       'loan[guarantee][user][birthday]',
-      this.creditForm.get('guarantee').get('user').get('birthday').value
+      this.creditForm.get(['guarantee', 'user', 'birthday']).value
     );
     this._credits.createCredit(this.creditData).subscribe(response => {
       this.prepareCreditForm();

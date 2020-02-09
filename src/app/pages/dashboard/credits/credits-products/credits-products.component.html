@@ -1,0 +1,34 @@
+<header>
+  <span class="h5">Agregar producto</span>
+  <button type="button" name="exit" (click)="closeModal.emit(true)"></button>
+</header>
+<main>
+  <form [formGroup]="productForm">
+    <section>
+      <div class="control--title">
+        <label for="name" class="tiny-body">Nombre</label>
+        <input type="text" formControlName="name">
+      </div>
+
+      <div class="control--title">
+        <label for="value" class="tiny-body">Valor</label>
+        <input type="text" formControlName="value">
+      </div>
+
+      <div class="control--title">
+        <label for="photo" class="tiny-body">
+          <span>Foto</span>
+          <div [className]="'fake-file-input ' + (photoLoaded ? 'file-loaded':'not-file-loaded')">
+            <span #photoPath></span>
+            <button type="button" name="button" (click)="clearFile(photoInput, photoPath)"></button>
+          </div>
+        </label>
+        <input type="file" accept="application/pdf" id="photo" (change)="uploadPhoto($event.target.files, photoPath)" accept="image/jpeg" #photoInput>
+      </div>
+    </section>
+  </form>
+</main>
+<footer>
+  <button type="button" class="button__medium-outline--primary" (click)="addProduct()">Agregar producto</button>
+  <button type="button" class="button__medium-fill--primary" (click)="closeModal.emit(true)">Cerrar</button>
+</footer>

@@ -16,6 +16,7 @@ export class CreditsComponent implements OnInit {
   selectedCredits: Array<any>;
   addWindowOpened: boolean;
   statusModalOpened: boolean;
+  productsModalOpened: boolean;
   @ViewChild(CreditsTableComponent) table: CreditsTableComponent;
 
   constructor(
@@ -23,7 +24,8 @@ export class CreditsComponent implements OnInit {
   ) {
     this.selectedCredits = [];
     this.addWindowOpened = false;
-    this.statusModalOpened = true;
+    this.statusModalOpened = false;
+    this.productsModalOpened = false;
   }
 
   ngOnInit() {
@@ -48,10 +50,25 @@ export class CreditsComponent implements OnInit {
     this.table.getCredits();
   }
 
+  openStatusModal(dropdown){
+    this.statusModalOpened = true;
+    this.renderer.removeClass(dropdown, 'active');
+  }
+
   closeStatusModal(){
     this.statusModalOpened = false;
     this.selectedCredits = [];
     this.table.getCredits();
+  }
+
+  openProductsModal(dropdown){
+    this.productsModalOpened = true;
+    this.renderer.removeClass(dropdown, 'active');
+  }
+
+  closeProductsModal(){
+    this.productsModalOpened = false;
+    this.selectedCredits = [];
   }
 
 }

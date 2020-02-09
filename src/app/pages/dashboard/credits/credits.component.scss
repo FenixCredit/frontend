@@ -200,5 +200,12 @@
         height: 255px;
       }
     }
+
+    #productsModal{
+      &.wrapper{
+        width: 570px;
+        height: 480px;
+      }
+    }
   }
 }

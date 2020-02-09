@@ -8,13 +8,15 @@ import { CreditsComponent } from './credits.component';
 import { CreditsTableComponent } from './credits-table/credits-table.component';
 import { CreditsAddComponent } from './credits-add/credits-add.component';
 import { CreditsStatusComponent } from './credits-status/credits-status.component';
+import { CreditsProductsComponent } from './credits-products/credits-products.component';
 
 @NgModule({
   declarations: [
     CreditsComponent,
     CreditsTableComponent,
     CreditsAddComponent,
-    CreditsStatusComponent
+    CreditsStatusComponent,
+    CreditsProductsComponent
   ],
   imports: [
     CommonModule,

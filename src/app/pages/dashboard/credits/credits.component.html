@@ -68,4 +68,13 @@
       ></app-credits-status>
     </div>
   </div>
+
+  <div class="modal" [hidden]="!productsModalOpened">
+    <div class="wrapper" id="productsModal">
+      <app-credits-products
+        [selectedCredit]="selectedCredits[0]"
+        (closeModal)="closeProductsModal()"
+      ></app-credits-products>
+    </div>
+  </div>
 </section>

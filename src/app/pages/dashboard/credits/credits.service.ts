@@ -31,6 +31,15 @@ export class CreditsService {
       .post(`${environment.API}/loans`, value, { headers: headers });
   }
 
+  createProduct(value: any){
+    let headers = new HttpHeaders()
+      .set('Accept', 'application/json')
+      .delete('Content-Type')
+
+    return this.httpClient
+      .post(`${environment.API}/products`, value, { headers: headers });
+  }
+
   changeStatus(loans: Array<{id: string, status: number}>){
     return this.httpClient
       .put(`${environment.API}/loans_status`, { loans: { loans } })
