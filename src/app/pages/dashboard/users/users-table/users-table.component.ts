@@ -19,13 +19,13 @@ export class UsersTableComponent implements OnInit {
   ) {
     this.users = [];
     this.selectedUsers = new EventEmitter<Array<any>>();
-    this.getUsers(1);
+    this.getUsers();
   }
 
   ngOnInit() {
   }
 
-  getUsers(role: number){
+  getUsers(){
     this._users.getClients().subscribe(response => {
       this.users = response["clients"]
     })

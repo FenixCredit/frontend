@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 import { CreditsService } from '../credits.service';
 import { Client } from '@models/client';
+import { Guarantee } from '@models/guarantee';
 
 
 @Component({
@@ -24,6 +25,8 @@ export class CreditsAddComponent implements OnInit {
   @Output() closeWindow;
 
   clients: Array<Client>;
+
+  guarantees: Array<Guarantee>;
 
   identificationFile: File;
   identificationLoaded: boolean;
@@ -206,7 +209,7 @@ export class CreditsAddComponent implements OnInit {
     let input = target.parentElement.previousSibling;
     let client = this.clients.find(client => client.id == target.id);
 
-    this.creditForm.controls['loan'].controls['client_id'].setValue(client.id)
+    this.creditForm.get(['loan', 'client_id']).setValue(client.id)
 
     this.renderer.setProperty(input, 'id', client.id);
     this.renderer.setProperty(input, 'value', client.user.first_name + ' ' + client.user.last_name);
@@ -254,7 +257,7 @@ export class CreditsAddComponent implements OnInit {
     let input = target.parentElement.previousSibling;
     let guarantee = this.guarantees.find(guarantee => guarantee.id == target.id);
 
-    this.creditForm.controls['guarantee'].controls['id'].setValue(guarantee.id)
+    this.creditForm.get(['guarantee', 'id']).setValue(guarantee.id)
 
     this.renderer.setProperty(input, 'id', guarantee.id);
     this.renderer.setProperty(input, 'value', guarantee.user.first_name + ' ' + guarantee.user.last_name);

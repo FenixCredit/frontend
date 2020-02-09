@@ -45,7 +45,7 @@ export class UsersComponent implements OnInit {
         this.selectedTab = 3
         break;
     }
-    this.table.getUsers(this.selectedTab)
+    this.table.getUsers()
     this.renderer.addClass(event.target, 'active');
   }
 
