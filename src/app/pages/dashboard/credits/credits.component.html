@@ -31,8 +31,8 @@
           <button type="button" (click)="toggleDropdown($event)">Acciones</button>
 
           <div class="options">
-            <button type="button" id="print" (click)="openCancelModal(dropdown)">Imprimir</button>
-            <button type="button" id="favourite" (click)="openFavoriteModal(dropdown)">Agregar a favoritos</button>
+            <button type="button" id="products" (click)="openProductsModal(dropdown)">Añadir producto</button>
+            <button type="button" id="status" (click)="openStatusModal(dropdown)">Cambiar status</button>
           </div>
         </div>
       </section>
@@ -59,4 +59,13 @@
       (closeWindow)="closeAddWindow()"
     ></app-credits-add>
   </aside>
+
+  <div class="modal" [hidden]="!statusModalOpened">
+    <div class="wrapper" id="statusModal">
+      <app-credits-status
+        [selectedCredits]="selectedCredits"
+        (closeModal)="closeStatusModal()"
+      ></app-credits-status>
+    </div>
+  </div>
 </section>

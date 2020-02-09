@@ -31,6 +31,11 @@ export class CreditsService {
       .post(`${environment.API}/loans`, value, { headers: headers });
   }
 
+  changeStatus(loans: Array<{id: string, status: number}>){
+    return this.httpClient
+      .put(`${environment.API}/loans_status`, { loans: { loans } })
+  }
+
   //City service
   getClients(q: string) {
     let params: HttpParams = new HttpParams()

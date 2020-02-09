@@ -1,0 +1,22 @@
+<header>
+  <span class="h5">Cambiar status</span>
+  <button type="button" name="exit" (click)="closeModal.emit(true)"></button>
+</header>
+<main>
+  <section>
+    <div class="control--label">
+      <label for="status" class="body-gray">Estatus</label>
+      <select id="status" #statusToChange>
+        <option value="payed">Pagado</option>
+        <option value="retarded">Retrasado</option>
+        <option value="in_course">En curso</option>
+        <option value="finished">Terminado</option>
+        <option value="cancelled">Cancelado</option>
+      </select>
+    </div>
+  </section>
+</main>
+<footer>
+  <button type="button" class="button__medium-outline--primary" (click)="changeStatus(statusToChange)">Cambiar estatus</button>
+  <button type="button" class="button__medium-fill--primary" (click)="closeModal.emit(true)">Cerrar</button>
+</footer>

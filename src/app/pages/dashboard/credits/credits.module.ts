@@ -7,12 +7,14 @@ import { CreditsRoutingModule } from './credits-routing.module';
 import { CreditsComponent } from './credits.component';
 import { CreditsTableComponent } from './credits-table/credits-table.component';
 import { CreditsAddComponent } from './credits-add/credits-add.component';
+import { CreditsStatusComponent } from './credits-status/credits-status.component';
 
 @NgModule({
   declarations: [
     CreditsComponent,
     CreditsTableComponent,
-    CreditsAddComponent
+    CreditsAddComponent,
+    CreditsStatusComponent
   ],
   imports: [
     CommonModule,
