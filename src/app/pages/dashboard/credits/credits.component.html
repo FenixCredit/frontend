@@ -1,3 +1,62 @@
-<p>
-  credits works!
-</p>
+<section id="credit">
+  <header>
+    <h3>Créditos</h3>
+
+    <input type="date" class="input__icon-right--datepicker">
+    <img src="/assets/icons/full-arrow/disabled.svg" alt="to">
+    <input type="date" class="input__icon-right--datepicker">
+
+    <div id="divider"></div>
+
+    <button type="button" class="button__large-fill--primary with-icon-left--plus-white" (click)="addWindowOpened=!addWindowOpened">Nuevo</button>
+  </header>
+  <main>
+    <section class="action-bar">
+      <section id="total" class="active">
+        <p class="h6">20</p>
+        <p class="c1">Total</p>
+      </section>
+
+      <section id="controls">
+        <p class="p2"
+          [hidden]="selectedCredits.length == 0">
+          {{selectedCredits.length}} seleccionados
+        </p>
+
+        <input type="text" class="input__icon-right--search" placeholder="Buscar">
+
+        <button type="button" class="button__large-outline--primary" (click)="filterWindowOpened=!filterWindowOpened">Filtros</button>
+
+        <div class="dropdown" id="actions" #dropdown>
+          <button type="button" (click)="toggleDropdown($event)">Acciones</button>
+
+          <div class="options">
+            <button type="button" id="print" (click)="openCancelModal(dropdown)">Imprimir</button>
+            <button type="button" id="favourite" (click)="openFavoriteModal(dropdown)">Agregar a favoritos</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <app-credits-table
+      (selectedCredits)="updateSelectedCredits($event)"
+    ></app-credits-table>
+
+    <footer class="pagination">
+      <span class="p2 hint">Pagina 1 de 3</span>
+      <div class="white-space"></div>
+      <button class="button__medium-outline--primary">
+        anterior
+      </button>
+      <button class="button__medium-outline--primary">
+        siguiente
+      </button>
+    </footer>
+  </main>
+
+  <aside [hidden]="!addWindowOpened">
+    <app-credits-add
+      (closeWindow)="closeAddWindow()"
+    ></app-credits-add>
+  </aside>
+</section>

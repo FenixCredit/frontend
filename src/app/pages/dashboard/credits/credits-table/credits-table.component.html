@@ -1,3 +1,42 @@
-<p>
-  credits-table works!
-</p>
+<table>
+  <thead>
+    <tr>
+      <th><input type="checkbox" #globalCheck (change)="checkAll()"></th>
+      <th>Acreditado</th>
+      <th>Monto</th>
+      <th>Fecha de inicio</th>
+      <th>Fecha de fin</th>
+      <th>Cantidad de pagos</th>
+      <th>Devuelto</th>
+      <th>Promotora</th>
+      <th>Estatus</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let c of credits">
+    <td><input type="checkbox" [checked]="c.checked" id="{{c.id}}" (change)="checkElement($event)"></td>
+    <td>
+      <span>
+        {{c.client.user.first_name}} {{c.client.user.last_name}}
+      </span>
+    </td>
+    <td><span>{{c.quantity}}</span></td>
+    <td><span>{{c.created_at}}</span></td>
+    <td><span>{{c.created_at}}</span></td>
+    <td>
+      <span>1 de 12</span>
+      <span>No pagado</span>
+    </td>
+    <td><span>$0.00</span></td>
+    <td>
+      <span>
+        {{c.client.promoter.user.first_name}} {{c.client.promoter.user.last_name}}
+      </span>
+    </td>
+    <td class="{{c.status}}"><span></span></td>
+  </tr>
+  <tr *ngIf="credits.length == 0">
+    <td colspan="9">
+      <span>No se encontraron resultados</span>
+    </td>
+  </tr>
+</table>

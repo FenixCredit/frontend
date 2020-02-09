@@ -22,7 +22,8 @@ export class UsersAddComponent implements OnInit {
 
   constructor(
     private renderer: Renderer2,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private _users: UsersService
   ) {
     this.selectedRegisterType = 1;
     this.selectedUserType = 1;
@@ -39,6 +40,7 @@ export class UsersAddComponent implements OnInit {
       contract: [null],
       address: [null],
       comission: [7.0],
+      promoter_id: ['40c192d6-a7f5-48c8-b57c-d55fa4c5d1c4']
     });
     this.closeWindow = new EventEmitter<boolean>();
   }
@@ -83,6 +85,17 @@ export class UsersAddComponent implements OnInit {
         break;
     }
     this.renderer.addClass(event.target, 'active');
+  }
+
+  onSubmit(){
+    if(this.selectedRegisterType == 1){
+      this._users.createUser(this.userForm.value).subscribe(response => {
+        this.userForm.reset();
+        this.closeWindow.emit(true);
+      }, (error) => {
+        console.log(error);
+      });
+    }
   }
 
 }

@@ -1,0 +1,48 @@
+@import 'scss/app';
+
+td{
+  &.payed:last-child{
+    &::before{
+      background-color: map-get($theme-colors, semantic-success);
+    }
+    span::before{
+      content: "Pagado"
+    }
+  }
+
+  &.cancelled:last-child{
+    &::before{
+      background-color: map-get($theme-colors, semantic-danger);
+    }
+    span::before{
+      content: "Cancelado"
+    }
+  }
+
+  &.retarded:last-child{
+    &::before{
+      background-color: map-get($theme-colors, semantic-warning);
+    }
+    span::before{
+      content: "Retrasado"
+    }
+  }
+
+  &.finished:last-child{
+    &::before{
+      background-color: map-get($theme-colors, semantic-info);
+    }
+    span::before{
+      content: "Terminado"
+    }
+  }
+
+  &.in_course:last-child{
+    &::before{
+      background-color: map-get($theme-colors, semantic-info);
+    }
+    span::before{
+      content: "En curso"
+    }
+  }
+}

@@ -65,6 +65,7 @@ export class UsersComponent implements OnInit {
 
   closeAddWindow(){
     this.addWindowOpened = false;
+    this.table.getUsers()
   }
 
 }

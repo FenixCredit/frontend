@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component, OnInit,
+  ViewChild, ViewChildren, QueryList,
+  ElementRef, Renderer2
+} from '@angular/core';
+
+import { CreditsTableComponent } from './credits-table/credits-table.component';
 
 @Component({
   selector: 'app-credits',
@@ -7,9 +13,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreditsComponent implements OnInit {
 
-  constructor() { }
+  selectedCredits: Array<any>;
+  addWindowOpened: boolean;
+  @ViewChild(CreditsTableComponent) table: CreditsTableComponent;
+
+  constructor(
+    private renderer: Renderer2
+  ) {
+    this.selectedCredits = [];
+    this.addWindowOpened = false;
+  }
 
   ngOnInit() {
+  }
+
+  toggleDropdown(event: any){
+    const hasClass = event.target.parentElement.classList.contains('active');
+
+    if(hasClass) {
+      this.renderer.removeClass(event.target.parentElement, 'active');
+    } else {
+      this.renderer.addClass(event.target.parentElement, 'active');
+    }
+  }
+
+  updateSelectedCredits(admins: Array<any>){
+    this.selectedCredits = admins;
+  }
+
+  closeAddWindow(){
+    this.addWindowOpened = false;
+    this.table.getCredits()
   }
 
 }

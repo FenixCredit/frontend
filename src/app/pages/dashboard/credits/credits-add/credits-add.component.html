@@ -1,3 +1,190 @@
-<p>
-  credits-add works!
-</p>
+<header>
+  <span class="h5">Nuevo credito</span>
+  <button type="button" name="exit" (click)="closeWindow.emit(true)"></button>
+</header>
+<main>
+  <form [formGroup]="creditForm">
+    <section formGroupName="loan">
+      <h4 class="s1">Información del credito</h4>
+
+      <div class="control--title">
+        <label for="client_id">Acreditado</label>
+        <div class="search-control">
+          <input type="text" placeholder="ej. Juan Soriano" (input)="searchClient($event.target)" #client>
+          <div class="results">
+            <span *ngFor="let client of clients"
+              [id]="client.id"
+              (click)="selectClient($event.target)">
+              {{client.user.first_name}} {{client.user.last_name}}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="control--title">
+        <label for="quantity">Cantidad</label>
+        <input type="text" id="quantity" formControlName="quantity" placeholder="ej. $5000">
+      </div>
+    </section>
+    <section formGroupName="guarantee">
+      <h4 class="s1">Aval</h4>
+
+      <div class="control--title">
+        <button type="button" (click)="changeRegisterType($event)" class="button__big active" id="search">
+          <h4>Buscar existente</h4>
+          <span>Busca un aval que ya haya sido registrado previamente.</span>
+        </button>
+        <button type="button" (click)="changeRegisterType($event)" class="button__big" id="register">
+          <h4>Registro manual</h4>
+          <span>Da de alta a un aval tú mismo de forma manual.</span>
+        </button>
+      </div>
+
+      <div *ngIf="selectedRegisterType == 1; else searchBlock;">
+        <div class="control--title">
+          <label for="guarantee_id">Buscar</label>
+          <div class="search-control">
+            <input type="text" placeholder="ej. Juan Soriano" (input)="searchGuarantee($event.target)" #guarantee>
+            <div class="results">
+              <span *ngFor="let guarantee of guarantees"
+                [id]="guarantee.id"
+                (click)="selectGuarantee($event.target)">
+                {{guarantee.user.first_name}} {{guarantee.user.last_name}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #searchBlock>
+        <div formGroupName="user">
+          <div class="control--title">
+            <label for="first_name">Nombre(s)</label>
+            <input type="text" id="first_name" formControlName="first_name" placeholder="ej. Manuel">
+          </div>
+
+          <div class="control--title">
+            <label for="last_name">Apellido(s)</label>
+            <input type="text" id="last_name" formControlName="last_name" placeholder="ej. Ayala Soto">
+          </div>
+
+          <div class="control--title">
+            <label for="phone">Teléfono</label>
+            <input type="text" id="phone" formControlName="phone" placeholder="ej. 8180000000">
+          </div>
+
+          <div class="control--title">
+            <label for="gender">Género</label>
+            <select formControlName="gender">
+              <option value="men">Hombre</option>
+              <option value="women">Mujer</option>
+              <option value="other">Otro</option>
+            </select>
+          </div>
+
+          <div class="control--title">
+            <label for="birthday">Fecha de nacimiento</label>
+            <input type="date" id="birthday" formControlName="birthday">
+          </div>
+        </div>
+
+        <div class="control--title">
+          <label for="street">Calle</label>
+          <input type="text" id="street" formControlName="street" placeholder="ej. San Ignacio">
+        </div>
+
+        <div class="control--title">
+          <label for="external_number">Número exterior</label>
+          <input type="text" id="external_number" formControlName="external_number" placeholder="ej. 214">
+        </div>
+
+        <div class="control--title">
+          <label for="internal_number">Número interior</label>
+          <input type="text" id="internal_number" formControlName="internal_number" placeholder="ej. 3E">
+        </div>
+
+        <div class="control--title">
+          <label for="colony">Colonia</label>
+          <input type="text" id="colony" formControlName="colony" placeholder="ej. Santa María">
+        </div>
+
+        <div class="control--title">
+          <label for="identification" class="tiny-body">
+            <span>Identificación</span>
+            <div [className]="'fake-file-input ' + (identificationLoaded ? 'file-loaded':'not-file-loaded')">
+              <span #identificationPath></span>
+              <button type="button" name="button" (click)="clearFile(identificationInput, identificationPath)"></button>
+            </div>
+          </label>
+          <input type="file" accept="application/pdf" id="identification" formControlName="identification" (change)="uploadIdentification($event.target.files, identificationPath)" #identificationInput>
+        </div>
+
+        <div class="control--title">
+          <label for="address-proof" class="tiny-body">
+            <span>Comprobante de domicilio</span>
+            <div [className]="'fake-file-input ' + (addressProofLoaded ? 'file-loaded':'not-file-loaded')">
+              <span #addressProofPath></span>
+              <button type="button" name="button" (click)="clearFile(addressProofInput, addressProofPath)"></button>
+            </div>
+          </label>
+          <input type="file" accept="application/pdf" id="address-proof" formControlName="address_proof" (change)="uploadAddressProof($event.target.files, addressProofPath)" #addressProofInput>
+        </div>
+
+        <div class="control--title">
+          <label for="warning-letter" class="tiny-body">
+            <span>Carta de alerta</span>
+            <div [className]="'fake-file-input ' + (warningLetterLoaded ? 'file-loaded':'not-file-loaded')">
+              <span #warningLetterPath></span>
+              <button type="button" name="button" (click)="clearFile(warningLetterInput, warningLetterPath)"></button>
+            </div>
+          </label>
+          <input type="file" accept="application/pdf" id="warning-letter" formControlName="warning_letter" (change)="uploadWarningLetter($event.target.files, warningLetterPath)" #warningLetterInput>
+        </div>
+      </ng-template>
+    </section>
+    <section formGroupName="promissory_note">
+      <h4 class="s1">Pagaré</h4>
+
+      <div class="control--title">
+        <label for="file" class="tiny-body">
+          <span>Archivo</span>
+          <div [className]="'fake-file-input ' + (fileLoaded ? 'file-loaded':'not-file-loaded')">
+            <span #filePath></span>
+            <button type="button" name="button" (click)="clearFile(fileInput, filePath)"></button>
+          </div>
+        </label>
+        <input type="file" accept="application/pdf" id="file" (change)="uploadFile($event.target.files, filePath)" accept="application/pdf" #fileInput>
+      </div>
+
+      <div class="control--title">
+        <label for="code">Código único</label>
+        <input type="text" id="code" formControlName="code" placeholder="ej. 67590020">
+      </div>
+    </section>
+    <!--section formArrayName="products">
+      <h4 class="s1">Productos</h4>
+
+      <div class="card" *ngFor="let product of productArray.controls; index as i" [formGroupName]="i">
+        <div class="control--title">
+          <label for="name" class="tiny-body">Nombre</label>
+          <input type="text" formControlName="name">
+        </div>
+
+        <div class="control--title">
+          <label for="value" class="tiny-body">Valor</label>
+          <input type="text" formControlName="value">
+        </div>
+
+        <div class="control--title">
+          <label for="photo" class="tiny-body">Foto</label>
+          <input type="file" formControlName="photo">
+        </div>
+
+        <button type="button" name="delete" class="remove-button" (click)="removeProduct(i)"></button>
+      </div>
+    </section-->
+  </form>
+</main>
+<footer>
+    <button type="button" class="button__medium-outline--primary" (click)="onCancel()">Cancelar</button>
+    <button type="submit" class="button__medium-fill--primary" (click)="onSubmit()">Terminar</button>
+</footer>

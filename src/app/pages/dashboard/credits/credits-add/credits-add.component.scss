@@ -1,0 +1,311 @@
+@import 'scss/app';
+
+header{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 21px 30px;
+  border-bottom: 1px solid map-get($theme-colors, theme-grey);
+
+  span, button[name="exit"]{
+    background-repeat: no-repeat, repeat;
+    background-size: auto 24px, 100%;
+    background-position-y: 50%, 0;
+  }
+
+  span{
+    display: inline-block;
+    padding-left: 56px;
+    background-position-x: 0, 0;
+    background-image: url("/assets/icons/employee/default.svg");
+  }
+
+  button[name="exit"]{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-position-x: 50%, 0;
+    background-image: url("/assets/icons/cross/disabled.svg");
+    &:focus{
+      outline-width: 3px;
+      outline-offset: .5px;
+      outline-color: map-get($theme-colors, system-grey);
+      border-color: map-get($theme-colors, system-link);
+    }
+    &:hover{
+      background-image: url("/assets/icons/cross/default.svg");
+    }
+  }
+}
+
+main{
+  section{
+    padding: 24px 30px 0 24px;
+    border-bottom: 1px solid map-get($theme-colors, theme-grey);
+
+    &:last-child{
+      border-bottom: 0;
+    }
+    .search-control{
+      @include generate-input-with-icon(search, right);
+
+      input{
+        @extend .input__icon-right--search;
+      }
+
+      .results{
+        position: absolute;
+        width: 484px;
+        height: auto;
+        padding: 10px 12px;
+        border-radius: 4px;
+        border: 1px solid map-get($theme-colors, theme-grey);
+        background-color: map-get($theme-colors, theme-white);
+        z-index: 1;
+        display: none;
+
+        &.active{
+          display: block;
+        }
+
+        span{
+          @extend .p1;
+          display: block;
+          cursor: pointer;
+
+          &:hover{
+            background-color: lighten(map-get($theme-colors, theme-grey), 5%);
+          }
+        }
+      }
+    }
+
+    .control{
+      &--label, &--title{
+        margin-bottom: 24px;
+        display: inline-block;
+        width: 100%;
+
+        label{
+          color: map-get($theme-colors, theme-default);
+
+          span{
+            display: block;
+            cursor: pointer;
+          }
+
+          .fake-file-input{
+            @extend .bf-large;
+            @extend .bs-large;
+            @extend .bp-outline;
+            width: 100%;
+            padding: 14px 72px 14px 16px;
+            text-transform: capitalize;
+            font-weight: normal;
+            border-color: lighten(map-get($theme-colors, theme-grey), 25%);
+            background-color: lighten(map-get($theme-colors, theme-grey), 35%);
+            display: block;
+            cursor: pointer;
+            position: relative;
+
+            &.not-file-loaded{
+              background-image: url('/assets/icons/search/focus.svg');
+              background-repeat: no-repeat, repeat;
+              background-position: right .7em top 50%, 0 0;
+              background-size: 20px auto, 100%;
+
+              &:before{
+                content: "Examinar";
+                color: map-get($theme-colors, theme-grey);
+                width: 100%;
+              }
+
+              button{
+                display: none;
+              }
+            }
+
+            &.file-loaded{
+              button{
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                width: 20px;
+                height: 20px;
+                background: none;
+                background-image: url('/assets/icons/cross/disabled.svg');
+                background-repeat: no-repeat, repeat;
+                background-position: 0, 0 0;
+                background-size: 16px auto, 100%;
+                border: none;
+                padding: 0;
+                transform: translateY(-50%);
+                outline: none;
+
+                &:hover{
+                  background-image: url('/assets/icons/cross/default.svg');
+                }
+              }
+            }
+          }
+        }
+
+        #file, #identification, #address-proof, #warning-letter{
+          display: none;
+        }
+
+        select{
+          height: 48px;
+          min-width: 231px;
+          padding: 9px 8px 9px 12px;
+          border: 1px #eaebec solid;
+          border-radius: 4px;
+          font-size: 14px;
+          line-height: 22px;
+          letter-spacing: 0.2px;
+          background-color: #fff;
+        }
+
+        &[name="phone"]{
+          width: 256px;
+          min-width: 256px;
+          margin-right: 28px;
+
+          #phone{
+            min-width: 256px;
+          }
+        }
+
+        &[name="gender"]{
+          width: 150px;
+          min-width: 150px;
+
+          #gender{
+            min-width: 150px;
+          }
+        }
+      }
+
+      &--label{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &--title{
+        label{
+          display: block;
+        }
+        .button__big{
+          @extend .button__giant-outline--primary;
+          height: auto;
+          text-align: left;
+          text-transform: none;
+          padding: 9px 16px;
+          width: 240px;
+
+          &:first-child{
+            margin-right: 30px;
+          }
+          &:active{
+            h4, span{
+              color: map-get($theme-colors, system-link) !important;
+            }
+          }
+          &:hover{
+            h4, span{
+              color: map-get($theme-colors, system-background);
+            }
+          }
+          h4, span{
+            color: map-get($theme-colors, system-link);
+            pointer-events: none;
+          }
+          h4{
+            @extend .s1;
+          }
+          span{
+            @extend .c1;
+          }
+          &.active{
+            @extend .bc-primary-fill;
+
+            h4, span{
+              color: map-get($theme-colors, theme-white);
+            }
+          }
+        }
+        .button__pill{
+          @extend .button__small-outline--primary;
+          width: auto;
+          margin-right: 10px;
+
+          &:last-child{
+            margin-right: 0;
+          }
+          &.active{
+            @extend .bc-primary-fill;
+          }
+        }
+
+        input{
+          width: 100%;
+        }
+      }
+    }
+    .card{
+      width: 100%;
+      padding:  46px 16px 16px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px 0 rgba(19, 27, 35, 0.08);
+      position: relative;
+
+      .control{
+        &--title{
+          margin-bottom: 0;
+        }
+      }
+
+      input[type="number"]{
+        width: 120px;
+      }
+
+      button[name="delete"]{
+        width: 30px;
+        height: 30px;
+        border: none;
+
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        transform: translateY(-50%);
+
+        background-position-x: 50%, 0;
+        background-position-y: 50%, 0;
+        background-image: url("/assets/icons/cross/disabled.svg");
+        background-repeat: no-repeat;
+        &:focus{
+          outline-width: 3px;
+          outline-offset: .5px;
+          outline-color: map-get($theme-colors, theme-grey);
+          border-color: map-get($theme-colors, semantic-info);
+        }
+        &:hover{
+          background-image: url("/assets/icons/cross/default.svg");
+        }
+      }
+    }
+  }
+}
+
+footer{
+  width: 100%;
+  text-align: right;
+  padding: 15px 30px;
+  border-top: 1px solid map-get($theme-colors, system-grey);
+
+  button:first-child{
+    margin-right: 24px;
+  }
+}

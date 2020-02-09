@@ -17,6 +17,11 @@ export class UsersService {
     private httpClient: HttpClient
   ) { }
 
+  createUser(value: any){
+    return this.httpClient
+      .post(`${environment.API}/clients`, { client: value });
+  }
+
   getAdmins(){
     return this.httpClient
       .get<Admin[]>(`${environment.API}/admins`);
