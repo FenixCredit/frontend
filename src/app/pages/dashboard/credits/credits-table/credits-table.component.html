@@ -15,7 +15,7 @@
   <tr *ngFor="let c of credits">
     <td><input type="checkbox" [checked]="c.checked" id="{{c.id}}" (change)="checkElement($event)"></td>
     <td>
-      <span>
+      <span [id]="c.id" class="credit-id" (click)="displayCredit($event.target.id)">
         {{c.client.user.first_name}} {{c.client.user.last_name}}
       </span>
     </td>
@@ -23,8 +23,8 @@
     <td><span>{{c.created_at}}</span></td>
     <td><span>{{c.created_at}}</span></td>
     <td>
-      <span>1 de 12</span>
-      <span>No pagado</span>
+      <span>{{c.payments}} de 12</span>
+      <span class="{{c.last_payment_status}}"></span>
     </td>
     <td><span>$0.00</span></td>
     <td>

@@ -40,6 +40,7 @@
 
     <app-credits-table
       (selectedCredits)="updateSelectedCredits($event)"
+      (showCredit)="openDetailWindow($event)"
     ></app-credits-table>
 
     <footer class="pagination">
@@ -77,4 +78,11 @@
       ></app-credits-products>
     </div>
   </div>
+
+  <aside [hidden]="!detailWindowOpened">
+    <app-credits-detail
+      [loanToShow]="loanToShow"
+      (closeWindow)="closeDetailWindow()"
+    ></app-credits-detail>
+  </aside>
 </section>

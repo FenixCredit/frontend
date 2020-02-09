@@ -5,6 +5,8 @@ import {
 } from '@angular/core';
 
 import { CreditsTableComponent } from './credits-table/credits-table.component';
+import { CreditsDetailComponent } from './credits-detail/credits-detail.component';
+import { Loan } from '@models/loan'
 
 @Component({
   selector: 'app-credits',
@@ -14,18 +16,23 @@ import { CreditsTableComponent } from './credits-table/credits-table.component';
 export class CreditsComponent implements OnInit {
 
   selectedCredits: Array<any>;
+  loanToShow: Loan;
   addWindowOpened: boolean;
   statusModalOpened: boolean;
   productsModalOpened: boolean;
+  detailWindowOpened: boolean;
   @ViewChild(CreditsTableComponent) table: CreditsTableComponent;
+  @ViewChild(CreditsDetailComponent) detail: CreditsDetailComponent;
 
   constructor(
     private renderer: Renderer2
   ) {
     this.selectedCredits = [];
+    this.loanToShow = new Loan();
     this.addWindowOpened = false;
     this.statusModalOpened = false;
     this.productsModalOpened = false;
+    this.detailWindowOpened = false;
   }
 
   ngOnInit() {
@@ -69,6 +76,17 @@ export class CreditsComponent implements OnInit {
   closeProductsModal(){
     this.productsModalOpened = false;
     this.selectedCredits = [];
+  }
+
+  openDetailWindow(loan: Loan){
+    this.loanToShow = loan;
+    this.detailWindowOpened = true;
+    this.detail.getLoan(loan)
+  }
+
+  closeDetailWindow(id: string){
+    this.detailWindowOpened = false;
+    this.table.getCredits()
   }
 
 }

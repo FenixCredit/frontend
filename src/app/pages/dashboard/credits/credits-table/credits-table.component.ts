@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 
 import { CreditsService } from '../credits.service';
+import { Loan } from '@models/loan'
 
 @Component({
   selector: 'app-credits-table',
@@ -16,12 +17,14 @@ export class CreditsTableComponent implements OnInit {
   credits: Array<any>;
   @ViewChild('globalCheck') globalCheck;
   @Output() selectedCredits;
+  @Output() showCredit;
 
   constructor(
     private _credits: CreditsService
   ) {
     this.credits = [];
     this.selectedCredits = new EventEmitter<Array<any>>();
+    this.showCredit = new EventEmitter<Loan>();
     this.getCredits();
   }
 
@@ -58,4 +61,9 @@ export class CreditsTableComponent implements OnInit {
     this.updateSelectedCredits()
   }
 
+  displayCredit(id: string){
+    let credit = this.credits.find(credit => credit.id == id);
+
+    this.showCredit.emit(credit);
+  }
 }

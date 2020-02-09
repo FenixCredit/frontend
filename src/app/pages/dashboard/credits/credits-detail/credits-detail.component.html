@@ -1,0 +1,72 @@
+<header>
+  <span class="h5">Detalle del credito</span>
+  <button type="button" name="exit" (click)="closeWindow.emit(true)"></button>
+</header>
+<main>
+  <section>
+    <h4 class="h6">Información del credito.</h4>
+
+    <div class="control--title">
+      <label class="tiny-body">Identificador</label>
+      <span>{{loan.id}}</span>
+    </div>
+
+    <div class="control--title">
+      <label class="tiny-body">Cantidad</label>
+      <span>{{loan.quantity}}</span>
+    </div>
+  </section>
+
+  <section>
+    <h4 class="h6">Información del cliente.</h4>
+
+    <div class="control--title">
+      <label class="tiny-body">Nombre</label>
+      <span>{{loan.client.user.first_name}} {{loan.client.user.last_name}}</span>
+    </div>
+
+    <div class="control--title">
+      <label class="tiny-body">Teléfono</label>
+      <span>{{loan.client.user.phone}}</span>
+    </div>
+  </section>
+
+  <section>
+    <h4 class="h6">Información del promotor.</h4>
+
+    <div class="control--title">
+      <label class="tiny-body">Nombre</label>
+      <span>{{loan.client.promoter.user.first_name}} {{loan.client.promoter.user.last_name}}</span>
+    </div>
+
+    <div class="control--title">
+      <label class="tiny-body">Teléfono</label>
+      <span>{{loan.client.promoter.user.phone}}</span>
+    </div>
+  </section>
+
+  <section>
+    <h4 class="h6">Información del pagaré.</h4>
+
+    <div class="control--title">
+      <label class="tiny-body">Id único</label>
+      <span>{{loan.promissory_note.id}}</span>
+    </div>
+
+    <div class="control--title">
+      <label class="tiny-body">Código único</label>
+      <span>{{loan.promissory_note.code}}</span>
+    </div>
+  </section>
+
+  <section>
+    <h4 class="h6">Productos de respaldo.</h4>
+
+    <div class="control--title" *ngFor="let product of loan.promissory_note.products" name="product">
+      <label class="tiny-body">Producto</label>
+      <img [src]="'http://localhost:3001' + product.photo.url | safe">
+      <span>{{product.name}}</span>
+      <span>${{product.value}}</span>
+    </div>
+  </section>
+</main>

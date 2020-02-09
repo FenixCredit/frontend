@@ -45,4 +45,21 @@ td{
       content: "En curso"
     }
   }
+
+  span[class$="-id"]:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  span{
+    &.not_executed::before{
+      content: "Sin pagar"
+    }
+    &.executed_complete::before{
+      content: "Pago completo"
+    }
+    &.executed_partial::before{
+      content: "Pago parcial"
+    }
+  }
 }

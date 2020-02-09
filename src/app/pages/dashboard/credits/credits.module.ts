@@ -9,6 +9,8 @@ import { CreditsTableComponent } from './credits-table/credits-table.component';
 import { CreditsAddComponent } from './credits-add/credits-add.component';
 import { CreditsStatusComponent } from './credits-status/credits-status.component';
 import { CreditsProductsComponent } from './credits-products/credits-products.component';
+import { CreditsDetailComponent } from './credits-detail/credits-detail.component';
+import { GlobalModule } from '@shared/module/global.module';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { CreditsProductsComponent } from './credits-products/credits-products.co
     CreditsTableComponent,
     CreditsAddComponent,
     CreditsStatusComponent,
-    CreditsProductsComponent
+    CreditsProductsComponent,
+    CreditsDetailComponent
   ],
   imports: [
     CommonModule,
     CreditsRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GlobalModule
   ]
 })
 export class CreditsModule { }

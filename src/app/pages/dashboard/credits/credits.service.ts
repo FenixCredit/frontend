@@ -22,6 +22,11 @@ export class CreditsService {
       .get<Loan[]>(`${environment.API}/loans`);
   }
 
+  getCredit(id: string){
+    return this.httpClient
+      .get(`${environment.API}/loans/${id}`)
+  }
+
   createCredit(value: any){
     let headers = new HttpHeaders()
       .set('Accept', 'application/json')
