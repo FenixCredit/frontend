@@ -11,6 +11,7 @@ import { CreditsStatusComponent } from './credits-status/credits-status.componen
 import { CreditsProductsComponent } from './credits-products/credits-products.component';
 import { CreditsDetailComponent } from './credits-detail/credits-detail.component';
 import { GlobalModule } from '@shared/module/global.module';
+import { CreditsPaymentComponent } from './credits-payment/credits-payment.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { GlobalModule } from '@shared/module/global.module';
     CreditsAddComponent,
     CreditsStatusComponent,
     CreditsProductsComponent,
-    CreditsDetailComponent
+    CreditsDetailComponent,
+    CreditsPaymentComponent
   ],
   imports: [
     CommonModule,

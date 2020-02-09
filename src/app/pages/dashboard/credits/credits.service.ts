@@ -45,6 +45,11 @@ export class CreditsService {
       .post(`${environment.API}/products`, value, { headers: headers });
   }
 
+  createPayment(id: string, value: any){
+    return this.httpClient
+      .post(`${environment.API}/payments/${id}`, { payment: value });
+  }
+
   changeStatus(loans: Array<{id: string, status: number}>){
     return this.httpClient
       .put(`${environment.API}/loans_status`, { loans: { loans } })

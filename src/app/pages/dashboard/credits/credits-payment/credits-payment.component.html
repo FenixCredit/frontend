@@ -1,0 +1,27 @@
+<header>
+  <span class="h5">Agregar pago</span>
+  <button type="button" name="exit" (click)="closeModal.emit(true)"></button>
+</header>
+<main>
+  <form [formGroup]="paymentForm">
+    <section>
+      <div class="control--title">
+        <label for="quantity" class="tiny-body">Cantidad</label>
+        <input type="number" id="quantity" formControlName="quantity">
+      </div>
+
+      <div class="control--title">
+        <label for="status" class="tiny-body">Valor</label>
+        <select id="status" formControlName="status">
+          <option value="executed_complete">Pago completo</option>
+          <option value="executed_partial">Pago parcial</option>
+          <option value="not_executed">Sin pagar</option>
+        </select>
+      </div>
+    </section>
+  </form>
+</main>
+<footer>
+  <button type="button" class="button__medium-outline--primary" (click)="addPayment()">Agregar producto</button>
+  <button type="button" class="button__medium-fill--primary" (click)="closeModal.emit(true)">Cerrar</button>
+</footer>

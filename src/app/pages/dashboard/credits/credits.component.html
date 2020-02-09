@@ -33,6 +33,7 @@
           <div class="options">
             <button type="button" id="products" (click)="openProductsModal(dropdown)">Añadir producto</button>
             <button type="button" id="status" (click)="openStatusModal(dropdown)">Cambiar status</button>
+            <button type="button" id="status" (click)="openPaymentsModal(dropdown)">Agregar pago</button>
           </div>
         </div>
       </section>
@@ -85,4 +86,13 @@
       (closeWindow)="closeDetailWindow()"
     ></app-credits-detail>
   </aside>
+
+  <div class="modal" [hidden]="!paymentsModalOpened">
+    <div class="wrapper" id="paymentsModal">
+      <app-credits-payment
+        [selectedCredit]="selectedCredits[0]"
+        (closeModal)="closePaymentsModal()"
+      ></app-credits-payment>
+    </div>
+  </div>
 </section>
